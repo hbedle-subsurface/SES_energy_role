@@ -2,826 +2,1763 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-<meta name="description" content="Find your place in the energy future. A quiz for University of Oklahoma students — any major welcome.">
-<meta property="og:title" content="What's Your Energy Role? · OU SES">
-<meta property="og:description" content="The future of energy needs every discipline. 5 questions to find your fit.">
-<meta property="og:image" content="https://ou.edu/content/dam/homepage/og-image.jpg">
-<title>What's Your Energy Role? · OU SES Certificate</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>What Kind of Energy Person Are You? | OU SES Certificate</title>
+<meta name="description" content="Five questions. One honest answer about what you should do with your degree. OU Sustainable Energy Systems Certificate.">
 
+<!-- 
+  FONT PAIRING:
+  Display: "Bebas Neue" (wide, loud, actual poster energy - never squishes or clips)
+  Body: "DM Sans" (utilitarian, clean, stays out of the way)
+-->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 
 <style>
-/* ── tokens ── */
+/* =====================
+   CSS CUSTOM PROPERTIES
+   ===================== */
 :root {
   --crimson: #8B1A1A;
-  --crimson-dark: #5a0d0d;
-  --crimson-light: #fdf0f0;
-  --cream: #faf7f2;
-  --forest: #1d3a2a;
-  --slate: #1e2a38;
-  --gold: #c8922a;
-  --text: #1a1a1a;
-  --text-muted: #5a5a5a;
-  --border: rgba(0,0,0,.1);
-  --r: 14px;
-  --r-sm: 9px;
-  --serif: 'DM Serif Display', Georgia, serif;
-  --sans: 'DM Sans', system-ui, sans-serif;
-  --shadow: 0 4px 24px rgba(0,0,0,.10);
-  --shadow-lg: 0 12px 48px rgba(0,0,0,.18);
+  --crimson-bright: #C0392B;
+  --forest: #1A3D2B;
+  --forest-mid: #2D5A40;
+  --near-black: #0D0D0F;
+  --off-white: #F2EDE6;
+  --warm-white: #FAF7F2;
+  --gold: #C9A84C;
+  --gold-light: #E8C96A;
+
+  /* Result card colors */
+  --stem-bg: #0A1628;
+  --stem-accent: #4A90D9;
+  --stem-text: #C8DCF0;
+
+  --comm-bg: #2C1810;
+  --comm-accent: #D4884A;
+  --comm-text: #F2D9C4;
+
+  --biz-bg: #0F0F12;
+  --biz-accent: #C9A84C;
+  --biz-text: #E8D9BA;
+
+  --policy-bg: #161B26;
+  --policy-accent: #7B8FA8;
+  --policy-text: #C8D4E0;
+
+  --equity-bg: #0E1F14;
+  --equity-accent: #5AB87A;
+  --equity-text: #C4E0CC;
+
+  --font-display: 'Bebas Neue', sans-serif;
+  --font-body: 'DM Sans', sans-serif;
+
+  --radius: 4px;
+  --radius-lg: 12px;
 }
 
-/* ── reset ── */
+/* =====================
+   RESET + BASE
+   ===================== */
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
 html { scroll-behavior: smooth; }
+
 body {
-  font-family: var(--sans);
-  font-size: 16px;
-  color: var(--text);
+  font-family: var(--font-body);
+  font-weight: 400;
+  color: var(--off-white);
   min-height: 100vh;
   overflow-x: hidden;
-  background: var(--cream);
+  position: relative;
+  /* Layered mesh gradient: deep crimson → forest → near-black */
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 20%, rgba(139, 26, 26, 0.55) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 85% 70%, rgba(26, 61, 43, 0.6) 0%, transparent 55%),
+    radial-gradient(ellipse 70% 80% at 50% 50%, rgba(13, 13, 15, 0.9) 0%, transparent 70%),
+    linear-gradient(160deg, #1A0808 0%, #0D1A12 40%, #0D0D0F 100%);
+  background-attachment: fixed;
 }
 
-/* ── page background ── */
-.page-bg {
+/* SVG grain texture overlay */
+body::before {
+  content: '';
   position: fixed;
   inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='grain'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23grain)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
   z-index: 0;
-  background:
-    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(139,26,26,.22) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(29,58,42,.20) 0%, transparent 60%),
-    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(200,146,42,.07) 0%, transparent 70%),
-    var(--cream);
-}
-.page-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image:
-    radial-gradient(circle at 1px 1px, rgba(139,26,26,.06) 1px, transparent 0);
-  background-size: 32px 32px;
+  opacity: 0.6;
 }
 
-/* ── layout ── */
-.wrap {
+/* =====================
+   LAYOUT CONTAINER
+   ===================== */
+.app {
   position: relative;
   z-index: 1;
-  max-width: 520px;
+  max-width: 680px;
   margin: 0 auto;
-  padding: 1.25rem 1rem 3rem;
+  padding: 0 20px;
 }
 
-/* ── wordmark ── */
-.wordmark {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 1.5rem;
-}
-.wordmark-ou {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  background: var(--crimson);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.wordmark-ou svg { width: 20px; height: 20px; fill: white; }
-.wordmark-text { font-size: 12px; font-weight: 400; color: var(--text-muted); line-height: 1.3; letter-spacing: .02em; }
-.wordmark-text strong { font-weight: 500; color: var(--text); }
+/* =====================
+   SCREENS (show/hide)
+   ===================== */
+.screen { display: none; }
+.screen.active { display: block; }
 
-/* ── hero card ── */
-.hero {
-  background: var(--crimson-dark);
-  border-radius: 20px;
-  padding: 1.75rem 1.5rem 1.75rem;
-  margin-bottom: 1rem;
-  position: relative;
-  overflow: hidden;
-  box-shadow: var(--shadow-lg);
+/* =====================
+   INTRO SCREEN
+   ===================== */
+#screen-intro {
+  padding-top: 60px;
+  padding-bottom: 80px;
 }
-.hero::before {
-  content: '';
-  position: absolute;
-  top: -60px; right: -60px;
-  width: 220px; height: 220px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(200,146,42,.25) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero::after {
-  content: '';
-  position: absolute;
-  bottom: -40px; left: -40px;
-  width: 160px; height: 160px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(29,58,42,.40) 0%, transparent 70%);
-  pointer-events: none;
-}
-.hero-kicker {
+
+.intro-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
   font-size: 11px;
-  letter-spacing: .12em;
+  letter-spacing: 0.18em;
   text-transform: uppercase;
-  color: rgba(255,255,255,.55);
-  margin-bottom: .75rem;
-}
-.hero h1 {
-  font-family: var(--serif);
-  font-size: clamp(28px, 7vw, 38px);
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: 1rem;
-}
-.hero h1 em {
-  font-style: italic;
-  color: #f5c878;
-}
-.hero-desc {
-  font-size: 14px;
-  color: rgba(255,255,255,.72);
-  line-height: 1.65;
-  margin-bottom: 1.25rem;
-  max-width: 340px;
-}
-.hero-pills {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 7px;
-}
-.hero-pill {
-  font-size: 12px;
-  padding: 5px 11px;
-  border-radius: 99px;
-  border: 0.5px solid rgba(255,255,255,.22);
-  color: rgba(255,255,255,.82);
-  background: rgba(255,255,255,.08);
-  display: flex;
-  align-items: center;
-  gap: 5px;
-}
-.hero-pill i { font-size: 13px; }
-
-/* ── scholarship banner ── */
-.scholarship-banner {
-  background: #fff;
-  border: 0.5px solid var(--border);
-  border-left: 3px solid var(--gold);
-  border-radius: var(--r-sm);
-  padding: .85rem 1rem;
-  margin-bottom: 1rem;
-  display: flex;
-  align-items: flex-start;
-  gap: 10px;
-  box-shadow: var(--shadow);
-}
-.scholarship-banner i {
-  font-size: 18px;
   color: var(--gold);
-  margin-top: 1px;
-  flex-shrink: 0;
-}
-.scholarship-banner p {
-  font-size: 13px;
-  color: var(--text-muted);
-  line-height: 1.5;
-}
-.scholarship-banner p strong { color: var(--text); font-weight: 500; }
-
-/* ── progress ── */
-.prog-wrap { margin-bottom: 1rem; }
-.prog-top {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 7px;
-}
-.prog-label { font-size: 12px; color: var(--text-muted); letter-spacing: .02em; }
-.prog-num { font-size: 12px; font-weight: 500; color: var(--crimson); }
-.prog-track {
-  height: 5px;
-  background: rgba(139,26,26,.12);
-  border-radius: 99px;
-  overflow: hidden;
-}
-.prog-fill {
-  height: 100%;
-  background: linear-gradient(90deg, var(--crimson), #c0392b);
-  border-radius: 99px;
-  transition: width .5s cubic-bezier(.4,0,.2,1);
-}
-
-/* ── question card ── */
-.q-card {
-  background: #fff;
-  border: 0.5px solid var(--border);
-  border-radius: 18px;
-  padding: 1.5rem;
-  margin-bottom: .75rem;
-  box-shadow: var(--shadow);
-}
-.q-kicker {
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: var(--crimson);
-  margin-bottom: .7rem;
+  margin-bottom: 24px;
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 10px;
 }
-.q-kicker::before {
+
+.intro-eyebrow::before {
   content: '';
   display: inline-block;
-  width: 14px;
-  height: 2px;
-  background: var(--crimson);
-  border-radius: 99px;
+  width: 28px;
+  height: 1px;
+  background: var(--gold);
 }
-.q-text {
-  font-family: var(--serif);
-  font-size: clamp(17px, 4.5vw, 20px);
-  line-height: 1.4;
-  color: var(--text);
-  margin-bottom: 1.25rem;
+
+.intro-headline {
+  font-family: var(--font-display);
+  font-size: clamp(48px, 13vw, 88px);
+  font-weight: 400;
+  line-height: 1.0;
+  letter-spacing: 0.02em;
+  color: var(--warm-white);
+  margin-bottom: 28px;
+  text-wrap: balance;
 }
-.opts { display: flex; flex-direction: column; gap: 8px; }
-.opt {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  padding: 13px 14px;
-  border: 0.5px solid var(--border);
-  border-radius: var(--r-sm);
-  background: #fafafa;
-  cursor: pointer;
-  text-align: left;
-  width: 100%;
-  transition: all .15s ease;
-  -webkit-tap-highlight-color: transparent;
+
+.intro-headline span {
+  color: var(--crimson-bright);
+  display: block;
 }
-.opt:hover, .opt:focus-visible {
-  background: var(--crimson-light);
-  border-color: rgba(139,26,26,.3);
-  outline: none;
-}
-.opt.sel {
-  background: var(--crimson-light);
-  border: 1.5px solid var(--crimson);
-}
-.opt-icon {
-  width: 32px;
-  height: 32px;
-  border-radius: 8px;
-  background: rgba(139,26,26,.08);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-  transition: background .15s;
-}
-.opt-icon i {
+
+.intro-body {
   font-size: 16px;
-  color: var(--crimson);
+  line-height: 1.65;
+  color: rgba(242, 237, 230, 0.75);
+  max-width: 480px;
+  margin-bottom: 40px;
 }
-.opt.sel .opt-icon {
-  background: var(--crimson);
-}
-.opt.sel .opt-icon i { color: #fff; }
-.opt-text {
-  font-size: 14px;
-  line-height: 1.45;
-  color: var(--text);
-}
-.opt.sel .opt-text { color: var(--crimson); font-weight: 500; }
 
-/* ── next button ── */
-.next-btn {
-  width: 100%;
-  background: var(--crimson);
-  color: #fff;
-  border: none;
-  border-radius: var(--r);
-  padding: 15px;
-  font-family: var(--sans);
-  font-size: 15px;
+.intro-body strong {
+  color: var(--off-white);
   font-weight: 500;
-  cursor: pointer;
-  display: none;
-  transition: transform .1s, opacity .2s;
-  letter-spacing: .01em;
-  box-shadow: 0 4px 18px rgba(139,26,26,.35);
 }
-.next-btn:hover { opacity: .9; }
-.next-btn:active { transform: scale(.98); }
 
-/* ── result ── */
-.result-hero {
-  border-radius: 20px;
-  overflow: hidden;
-  margin-bottom: 1rem;
-  box-shadow: var(--shadow-lg);
-  position: relative;
-}
-.result-hero-inner {
-  padding: 1.75rem 1.5rem 1.5rem;
-  position: relative;
-  z-index: 1;
-}
-.result-hero::before {
-  content: '';
-  position: absolute;
-  top: -80px; right: -80px;
-  width: 240px; height: 240px;
-  border-radius: 50%;
-  background: rgba(255,255,255,.06);
-  pointer-events: none;
-  z-index: 0;
-}
-.result-eyebrow {
-  font-size: 11px;
-  letter-spacing: .12em;
-  text-transform: uppercase;
-  color: rgba(255,255,255,.55);
-  margin-bottom: .5rem;
-}
-.result-title {
-  font-family: var(--serif);
-  font-size: clamp(24px, 6.5vw, 32px);
-  color: #fff;
-  line-height: 1.15;
-  margin-bottom: .35rem;
-}
-.result-sub {
-  font-size: 14px;
-  color: rgba(255,255,255,.7);
-  margin-bottom: 1rem;
-}
-.result-icon-wrap {
-  position: absolute;
-  top: 1.25rem;
-  right: 1.25rem;
-  width: 52px;
-  height: 52px;
-  border-radius: 12px;
-  background: rgba(255,255,255,.15);
-  border: 0.5px solid rgba(255,255,255,.2);
+.intro-meta {
   display: flex;
-  align-items: center;
-  justify-content: center;
+  gap: 24px;
+  margin-bottom: 48px;
+  flex-wrap: wrap;
 }
-.result-icon-wrap i { font-size: 26px; color: rgba(255,255,255,.9); }
 
-.result-tags { display: flex; flex-wrap: wrap; gap: 6px; }
-.rtag {
+.meta-chip {
   font-size: 12px;
-  padding: 4px 10px;
-  border-radius: 99px;
-  background: rgba(255,255,255,.15);
-  color: rgba(255,255,255,.88);
-  border: 0.5px solid rgba(255,255,255,.2);
-}
-
-/* ── result body cards ── */
-.result-body { display: flex; flex-direction: column; gap: .75rem; }
-
-.rcard {
-  background: #fff;
-  border: 0.5px solid var(--border);
-  border-radius: var(--r);
-  padding: 1.25rem;
-  box-shadow: var(--shadow);
-}
-.rcard-label {
-  font-size: 10px;
-  letter-spacing: .14em;
-  text-transform: uppercase;
-  color: var(--text-muted);
-  margin-bottom: .6rem;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: rgba(242, 237, 230, 0.5);
   display: flex;
   align-items: center;
   gap: 6px;
 }
-.rcard-label i { font-size: 14px; color: var(--crimson); }
-.rcard p {
+
+.meta-chip svg {
+  opacity: 0.7;
+}
+
+.btn-start {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--crimson-bright);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  padding: 18px 36px;
+  border: none;
+  border-radius: var(--radius);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+  box-shadow: 0 4px 32px rgba(192, 57, 43, 0.35);
+  text-decoration: none;
+}
+
+.btn-start:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 40px rgba(192, 57, 43, 0.5);
+  background: #D44638;
+}
+
+.btn-start:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+}
+
+.btn-start:active {
+  transform: translateY(0);
+}
+
+.intro-disclaimer {
+  margin-top: 20px;
+  font-size: 12px;
+  color: rgba(242, 237, 230, 0.35);
+  font-style: italic;
+}
+
+/* Decorative lines */
+.intro-deco {
+  margin: 48px 0 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  opacity: 0.25;
+}
+.intro-deco::before,
+.intro-deco::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--off-white);
+}
+.intro-deco-text {
+  font-size: 10px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  white-space: nowrap;
+  font-family: var(--font-body);
+}
+
+/* =====================
+   QUIZ SCREEN
+   ===================== */
+#screen-quiz {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+/* Progress */
+.progress-wrap {
+  margin-bottom: 40px;
+}
+
+.progress-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.progress-label {
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(242, 237, 230, 0.45);
+  font-weight: 500;
+}
+
+.progress-count {
+  font-family: var(--font-display);
   font-size: 14px;
-  line-height: 1.7;
-  color: var(--text-muted);
+  font-weight: 700;
+  color: var(--gold);
 }
-.rcard p strong { color: var(--text); font-weight: 500; }
 
-.nudge-card {
-  background: linear-gradient(135deg, #fdf8f0 0%, #f0f8f5 100%);
-  border-left: 3px solid var(--crimson);
-  border-radius: 0 var(--r) var(--r) 0;
-  padding: 1.1rem 1.25rem;
-  box-shadow: var(--shadow);
+.progress-track {
+  height: 4px;
+  background: rgba(242, 237, 230, 0.1);
+  border-radius: 2px;
+  overflow: hidden;
 }
-.nudge-card .rcard-label { margin-bottom: .5rem; }
 
-.schol-card {
-  background: var(--forest);
-  border-radius: var(--r);
-  padding: 1.25rem;
-  box-shadow: var(--shadow-lg);
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--crimson-bright), var(--gold));
+  border-radius: 2px;
+  transition: width 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+/* Question */
+.question-eyebrow {
+  font-size: 11px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: rgba(242, 237, 230, 0.4);
+  margin-bottom: 14px;
+  font-weight: 500;
+}
+
+.question-text {
+  font-family: var(--font-display);
+  font-size: clamp(24px, 6.5vw, 36px);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--warm-white);
+  margin-bottom: 10px;
+  letter-spacing: 0.03em;
+}
+
+.question-sub {
+  font-size: 14px;
+  color: rgba(242, 237, 230, 0.5);
+  margin-bottom: 32px;
+  line-height: 1.55;
+  font-style: italic;
+}
+
+/* Options */
+.options-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 32px;
+  list-style: none;
+}
+
+.option-btn {
+  width: 100%;
+  text-align: left;
+  background: rgba(242, 237, 230, 0.04);
+  border: 1.5px solid rgba(242, 237, 230, 0.12);
+  border-radius: var(--radius-lg);
+  padding: 18px 20px;
+  cursor: pointer;
+  color: rgba(242, 237, 230, 0.8);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.45;
+  transition: all 0.15s ease;
   display: flex;
   align-items: flex-start;
-  gap: 12px;
+  gap: 14px;
+  position: relative;
+  overflow: hidden;
 }
-.schol-icon {
-  width: 40px;
-  height: 40px;
-  border-radius: 10px;
-  background: rgba(200,146,42,.2);
+
+.option-btn::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, rgba(192, 57, 43, 0.12), transparent);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  border-radius: var(--radius-lg);
+}
+
+.option-letter {
+  flex-shrink: 0;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: rgba(242, 237, 230, 0.1);
+  border: 1px solid rgba(242, 237, 230, 0.2);
   display: flex;
   align-items: center;
   justify-content: center;
-  flex-shrink: 0;
-}
-.schol-icon i { font-size: 20px; color: var(--gold); }
-.schol-text { flex: 1; }
-.schol-text p {
-  font-size: 13px;
-  line-height: 1.55;
-  color: rgba(255,255,255,.72);
-  margin-top: 3px;
-}
-.schol-text p strong { color: rgba(255,255,255,.95); font-weight: 500; }
-.schol-title {
-  font-size: 14px;
-  font-weight: 500;
-  color: #fff;
-  margin-bottom: 3px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: all 0.15s ease;
+  margin-top: 1px;
+  font-family: var(--font-display);
 }
 
-.btn-row {
+.option-text {
+  flex: 1;
+  position: relative;
+  z-index: 1;
+}
+
+.option-btn:hover {
+  border-color: rgba(192, 57, 43, 0.5);
+  background: rgba(192, 57, 43, 0.08);
+  color: var(--off-white);
+  transform: translateX(2px);
+}
+
+.option-btn:hover::before {
+  opacity: 1;
+}
+
+.option-btn:hover .option-letter {
+  background: rgba(192, 57, 43, 0.2);
+  border-color: rgba(192, 57, 43, 0.5);
+  color: var(--crimson-bright);
+}
+
+/* Selected state - tactile, weighted */
+.option-btn[aria-pressed="true"] {
+  background: rgba(192, 57, 43, 0.18);
+  border-color: var(--crimson-bright);
+  color: var(--warm-white);
+  transform: translateX(4px);
+  box-shadow: inset 0 0 0 1px rgba(192, 57, 43, 0.3), 0 2px 20px rgba(192, 57, 43, 0.15);
+}
+
+.option-btn[aria-pressed="true"]::before {
+  opacity: 1;
+}
+
+.option-btn[aria-pressed="true"] .option-letter {
+  background: var(--crimson-bright);
+  border-color: var(--crimson-bright);
+  color: white;
+  box-shadow: 0 0 12px rgba(192, 57, 43, 0.5);
+}
+
+.option-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Quiz nav */
+.quiz-nav {
   display: flex;
-  flex-direction: column;
-  gap: 9px;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
 }
-.btn-cta {
-  display: block;
-  width: 100%;
-  background: var(--crimson);
-  color: #fff;
-  border: none;
-  border-radius: var(--r);
-  padding: 15px;
-  font-family: var(--sans);
-  font-size: 15px;
-  font-weight: 500;
-  cursor: pointer;
-  text-align: center;
-  text-decoration: none;
-  transition: opacity .2s, transform .1s;
-  box-shadow: 0 4px 18px rgba(139,26,26,.35);
-  letter-spacing: .01em;
-}
-.btn-cta:active { transform: scale(.98); }
-.btn-cta:hover { opacity: .9; }
-.btn-cta.outline {
+
+.btn-back {
   background: transparent;
-  color: var(--crimson);
-  border: 1px solid rgba(139,26,26,.3);
-  box-shadow: none;
+  border: 1.5px solid rgba(242, 237, 230, 0.2);
+  border-radius: var(--radius);
+  color: rgba(242, 237, 230, 0.5);
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 12px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+  letter-spacing: 0.03em;
 }
 
-/* ── animations ── */
-.fade-up {
-  animation: fadeUp .4s cubic-bezier(.22,1,.36,1) both;
-}
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(14px); }
-  to   { opacity: 1; transform: translateY(0); }
+.btn-back:hover {
+  border-color: rgba(242, 237, 230, 0.4);
+  color: var(--off-white);
 }
 
-/* ── footer ── */
-.quiz-footer {
-  text-align: center;
-  margin-top: 1.5rem;
-  font-size: 12px;
-  color: var(--text-muted);
+.btn-back:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-next {
+  background: var(--crimson-bright);
+  border: none;
+  border-radius: var(--radius);
+  color: white;
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  padding: 14px 28px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  transition: all 0.15s ease;
+  box-shadow: 0 2px 20px rgba(192, 57, 43, 0.3);
+  opacity: 0.3;
+  pointer-events: none;
+}
+
+.btn-next.enabled {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.btn-next.enabled:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 28px rgba(192, 57, 43, 0.45);
+}
+
+.btn-next.enabled:active {
+  transform: translateY(0);
+}
+
+.btn-next:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* Question transition animation */
+.question-block {
+  animation: slideInQuestion 0.35s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes slideInQuestion {
+  from {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* =====================
+   RESULT SCREEN
+   ===================== */
+#screen-result {
+  padding-top: 40px;
+  padding-bottom: 80px;
+}
+
+.result-reveal {
+  animation: revealResult 0.7s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+@keyframes revealResult {
+  from {
+    opacity: 0;
+    transform: scale(0.94) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Result hero card */
+.result-card {
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  margin-bottom: 24px;
+  position: relative;
+  border: 1px solid rgba(255,255,255,0.07);
+}
+
+.result-card-hero {
+  padding: 40px 28px 36px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative background element */
+.result-card-hero::after {
+  content: '';
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  opacity: 0.06;
+  background: currentColor;
+}
+
+.result-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 6px 12px;
+  border-radius: 2px;
+  margin-bottom: 20px;
+  font-family: var(--font-body);
+}
+
+.result-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 9vw, 52px);
+  font-weight: 400;
+  line-height: 1.05;
+  letter-spacing: 0.03em;
+  margin-bottom: 12px;
+}
+
+.result-tagline {
+  font-size: clamp(15px, 4vw, 18px);
+  font-weight: 300;
+  font-style: italic;
+  line-height: 1.45;
+  opacity: 0.8;
+  margin-bottom: 0;
+}
+
+/* Result card body */
+.result-card-body {
+  padding: 28px;
+  background: rgba(0,0,0,0.3);
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+.result-section {
+  margin-bottom: 28px;
+}
+
+.result-section:last-child {
+  margin-bottom: 0;
+}
+
+.result-section-label {
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 10px;
+  font-family: var(--font-body);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  opacity: 0.6;
+}
+
+.result-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+  opacity: 0.3;
+}
+
+.result-description {
+  font-size: 15px;
+  line-height: 1.7;
+  opacity: 0.9;
+}
+
+.result-program {
+  font-size: 15px;
+  line-height: 1.65;
+  opacity: 0.85;
+}
+
+
+/* Majors strip */
+
+/* Themed major pills */
+.result-stem .major-pill  { border-color: rgba(74,144,217,0.25); color: var(--stem-text); }
+.result-comm .major-pill  { border-color: rgba(212,136,74,0.25); color: var(--comm-text); }
+.result-biz  .major-pill  { border-color: rgba(201,168,76,0.25); color: var(--biz-text); }
+.result-policy .major-pill { border-color: rgba(123,143,168,0.25); color: var(--policy-text); }
+.result-equity .major-pill { border-color: rgba(90,184,122,0.25); color: var(--equity-text); }
+
+/* Themed majors strip label */
+.result-stem .result-majors-label   { color: var(--stem-accent); }
+.result-comm .result-majors-label   { color: var(--comm-accent); }
+.result-biz  .result-majors-label   { color: var(--biz-accent); }
+.result-policy .result-majors-label { color: var(--policy-accent); }
+.result-equity .result-majors-label { color: var(--equity-accent); }
+
+.result-majors-strip {
+  padding: 16px 28px 20px;
+  background: rgba(0,0,0,0.2);
+  border-top: 1px solid rgba(255,255,255,0.05);
+}
+
+.result-majors-label {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-weight: 600;
+  font-family: var(--font-body);
+  opacity: 0.45;
+  margin-bottom: 10px;
+}
+
+.result-majors-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.major-pill {
+  font-size: 11.5px;
+  font-family: var(--font-body);
+  font-weight: 400;
+  padding: 4px 10px;
+  border-radius: 20px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  white-space: nowrap;
+  opacity: 0.8;
+}
+
+/* Scholarship block */
+.scholarship-block {
+  border-radius: var(--radius);
+  padding: 18px 20px;
+  margin-top: 8px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+
+.scholarship-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.scholarship-text {
+  font-size: 14px;
   line-height: 1.6;
 }
-.quiz-footer a { color: var(--crimson); text-decoration: none; }
 
-/* ── responsive tweaks ── */
+.scholarship-text strong {
+  display: block;
+  font-weight: 500;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+/* Neighbors */
+.neighbors-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.neighbor-card {
+  border-radius: var(--radius);
+  padding: 14px 16px;
+  background: rgba(0,0,0,0.25);
+  border: 1px solid rgba(255,255,255,0.08);
+}
+
+.neighbor-title {
+  font-family: var(--font-display);
+  font-size: 13px;
+  font-weight: 700;
+  margin-bottom: 6px;
+  letter-spacing: -0.01em;
+}
+
+.neighbor-note {
+  font-size: 12px;
+  line-height: 1.5;
+  opacity: 0.65;
+}
+
+
+
+/* Email nudge line above CTA */
+.email-nudge {
+  font-size: 14px;
+  color: rgba(242, 237, 230, 0.55);
+  margin-bottom: 10px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+/* Email CTA button */
+.btn-email {
+  width: 100%;
+  background: transparent;
+  border: 1.5px solid rgba(242, 237, 230, 0.25);
+  border-radius: var(--radius);
+  color: var(--off-white);
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 400;
+  padding: 18px 22px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  text-decoration: none;
+  transition: all 0.2s ease;
+  margin-bottom: 16px;
+  line-height: 1.45;
+}
+
+.btn-email:hover {
+  border-color: var(--gold);
+  background: rgba(201, 168, 76, 0.07);
+}
+
+.btn-email:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-email-icon {
+  flex-shrink: 0;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(201, 168, 76, 0.15);
+  border: 1px solid rgba(201, 168, 76, 0.3);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold);
+}
+
+.btn-email-copy strong {
+  display: block;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--gold);
+  margin-bottom: 2px;
+}
+
+.btn-email-copy span {
+  font-size: 12.5px;
+  color: rgba(242, 237, 230, 0.5);
+}
+
+/* Result footer */
+.result-footer {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.btn-retake {
+  flex: 1;
+  min-width: 140px;
+  background: transparent;
+  border: 1.5px solid rgba(242, 237, 230, 0.2);
+  border-radius: var(--radius);
+  color: rgba(242, 237, 230, 0.65);
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+}
+
+.btn-retake:hover {
+  border-color: rgba(242, 237, 230, 0.4);
+  color: var(--off-white);
+}
+
+.btn-retake:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+.btn-website {
+  flex: 1;
+  min-width: 140px;
+  background: var(--gold);
+  border: none;
+  border-radius: var(--radius);
+  color: #1A0F00;
+  font-family: var(--font-display);
+  font-size: 14px;
+  font-weight: 700;
+  padding: 14px 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: all 0.15s ease;
+  text-decoration: none;
+  letter-spacing: 0.01em;
+}
+
+.btn-website:hover {
+  background: var(--gold-light);
+  transform: translateY(-1px);
+}
+
+.btn-website:focus-visible {
+  outline: 2px solid var(--off-white);
+  outline-offset: 2px;
+}
+
+/* =====================
+   RESULT THEMES
+   ===================== */
+
+/* STEM: cold, precise, navy */
+.result-stem .result-card-hero {
+  background: linear-gradient(145deg, var(--stem-bg) 0%, #0F2040 100%);
+  color: var(--stem-text);
+}
+.result-stem .result-card-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    rgba(74, 144, 217, 0.03) 0px,
+    rgba(74, 144, 217, 0.03) 1px,
+    transparent 1px,
+    transparent 40px
+  );
+}
+.result-stem .result-badge {
+  background: rgba(74, 144, 217, 0.15);
+  color: var(--stem-accent);
+}
+.result-stem .result-card-body { color: var(--stem-text); }
+.result-stem .scholarship-block { background: rgba(74, 144, 217, 0.08); border: 1px solid rgba(74, 144, 217, 0.2); }
+.result-stem .result-section-label { color: var(--stem-accent); }
+
+/* COMM: warm, analog, amber */
+.result-comm .result-card-hero {
+  background: linear-gradient(145deg, var(--comm-bg) 0%, #3D2010 100%);
+  color: var(--comm-text);
+}
+.result-comm .result-card-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 60% 60% at 80% 20%, rgba(212, 136, 74, 0.1), transparent);
+}
+.result-comm .result-badge {
+  background: rgba(212, 136, 74, 0.15);
+  color: var(--comm-accent);
+}
+.result-comm .result-card-body { color: var(--comm-text); }
+.result-comm .scholarship-block { background: rgba(212, 136, 74, 0.08); border: 1px solid rgba(212, 136, 74, 0.2); }
+.result-comm .result-section-label { color: var(--comm-accent); }
+
+/* BIZ: sleek, after-hours, gold */
+.result-biz .result-card-hero {
+  background: linear-gradient(145deg, var(--biz-bg) 0%, #1A1A1F 100%);
+  color: var(--biz-text);
+}
+.result-biz .result-card-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 80% 40% at 50% 100%, rgba(201, 168, 76, 0.07), transparent);
+}
+.result-biz .result-badge {
+  background: rgba(201, 168, 76, 0.12);
+  color: var(--biz-accent);
+}
+.result-biz .result-card-body { color: var(--biz-text); }
+.result-biz .scholarship-block { background: rgba(201, 168, 76, 0.07); border: 1px solid rgba(201, 168, 76, 0.2); }
+.result-biz .result-section-label { color: var(--biz-accent); }
+
+/* POLICY: weighty, institutional, slate */
+.result-policy .result-card-hero {
+  background: linear-gradient(145deg, var(--policy-bg) 0%, #1F2A38 100%);
+  color: var(--policy-text);
+}
+.result-policy .result-card-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(
+    180deg,
+    rgba(123, 143, 168, 0.025) 0px,
+    rgba(123, 143, 168, 0.025) 1px,
+    transparent 1px,
+    transparent 32px
+  );
+}
+.result-policy .result-badge {
+  background: rgba(123, 143, 168, 0.15);
+  color: var(--policy-accent);
+}
+.result-policy .result-card-body { color: var(--policy-text); }
+.result-policy .scholarship-block { background: rgba(123, 143, 168, 0.08); border: 1px solid rgba(123, 143, 168, 0.2); }
+.result-policy .result-section-label { color: var(--policy-accent); }
+
+/* EQUITY: alive, grounded, forest green */
+.result-equity .result-card-hero {
+  background: linear-gradient(145deg, var(--equity-bg) 0%, #152B1C 100%);
+  color: var(--equity-text);
+}
+.result-equity .result-card-hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse 70% 50% at 20% 80%, rgba(90, 184, 122, 0.08), transparent);
+}
+.result-equity .result-badge {
+  background: rgba(90, 184, 122, 0.12);
+  color: var(--equity-accent);
+}
+.result-equity .result-card-body { color: var(--equity-text); }
+.result-equity .scholarship-block { background: rgba(90, 184, 122, 0.07); border: 1px solid rgba(90, 184, 122, 0.2); }
+.result-equity .result-section-label { color: var(--equity-accent); }
+
+/* =====================
+   UTILITY / ICONS
+   ===================== */
+.icon-inline {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+/* =====================
+   DESKTOP ENHANCEMENTS
+   ===================== */
 @media (min-width: 600px) {
-  .wrap { padding: 2rem 1.5rem 4rem; }
-  .btn-row { flex-direction: row; }
-  .btn-cta { flex: 1; }
+  .intro-headline { font-size: 72px; }
+  .result-card-hero { padding: 48px 36px 40px; }
+  .result-card-body { padding: 32px 36px; }
+  .options-list { gap: 12px; }
+}
+
+@media (min-width: 768px) {
+  #screen-intro { padding-top: 80px; }
+  .app { padding: 0 32px; }
+}
+
+/* =====================
+   FOCUS VISIBLE GLOBAL
+   ===================== */
+:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 </style>
 </head>
 <body>
 
-<div class="page-bg" aria-hidden="true"></div>
+<!-- SVG Defs for icons (referenced inline) -->
+<svg xmlns="http://www.w3.org/2000/svg" style="display:none" aria-hidden="true">
+  <defs>
+    <!-- Envelope -->
+    <symbol id="icon-envelope" viewBox="0 0 20 20">
+      <rect x="2" y="5" width="16" height="12" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M2 7l8 5 8-5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <!-- Clock -->
+    <symbol id="icon-clock" viewBox="0 0 16 16">
+      <circle cx="8" cy="8" r="6.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M8 5v3.5l2 1.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Check / questions -->
+    <symbol id="icon-questions" viewBox="0 0 16 16">
+      <rect x="2" y="2" width="12" height="12" rx="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M5 8h6M5 5.5h3M5 10.5h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- Arrow right -->
+    <symbol id="icon-arrow-right" viewBox="0 0 16 16">
+      <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <!-- Arrow left -->
+    <symbol id="icon-arrow-left" viewBox="0 0 16 16">
+      <path d="M13 8H3M7 12L3 8l4-4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <!-- Refresh -->
+    <symbol id="icon-refresh" viewBox="0 0 16 16">
+      <path d="M2 8a6 6 0 1 0 1.5-4M2 4v4h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <!-- Dollar / scholarship -->
+    <symbol id="icon-dollar" viewBox="0 0 16 16">
+      <path d="M8 2v12M5 10.5c0 1.1 1.3 2 3 2s3-.9 3-2-1.3-2-3-2-3-.9-3-2 1.3-2 3-2 3 .9 3 2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </symbol>
+    <!-- External link -->
+    <symbol id="icon-external" viewBox="0 0 16 16">
+      <path d="M10 2h4v4M14 2L8 8M7 4H4a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2v-3" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    </symbol>
+    <!-- STEM icon -->
+    <symbol id="icon-stem" viewBox="0 0 20 20">
+      <circle cx="10" cy="10" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M10 2v2M10 16v2M2 10h2M16 10h2" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+      <circle cx="10" cy="10" r="7" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" fill="none" opacity="0.5"/>
+    </symbol>
+    <!-- COMM icon -->
+    <symbol id="icon-comm" viewBox="0 0 20 20">
+      <path d="M3 4h14a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H7l-4 3V5a1 1 0 0 1 1-1z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <path d="M7 8h6M7 11h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- BIZ icon -->
+    <symbol id="icon-biz" viewBox="0 0 20 20">
+      <path d="M3 16V8l7-5 7 5v8H3z" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <path d="M8 16v-5h4v5" stroke="currentColor" stroke-width="1.5" fill="none" stroke-linejoin="round"/>
+      <path d="M7 4h6" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- POLICY icon -->
+    <symbol id="icon-policy" viewBox="0 0 20 20">
+      <rect x="4" y="2" width="12" height="16" rx="1.5" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M7 7h6M7 10h6M7 13h4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+    </symbol>
+    <!-- EQUITY icon -->
+    <symbol id="icon-equity" viewBox="0 0 20 20">
+      <circle cx="10" cy="6" r="3" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="4" cy="14" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <circle cx="16" cy="14" r="2" stroke="currentColor" stroke-width="1.5" fill="none"/>
+      <path d="M7 9.5c-1.5 1-3 2.5-1 4M13 9.5c1.5 1 3 2.5 1 4M10 9v5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" fill="none"/>
+    </symbol>
+  </defs>
+</svg>
 
-<main class="wrap" role="main">
+<div class="app" role="main">
 
-  <!-- wordmark -->
-  <div class="wordmark">
-    <div class="wordmark-ou" aria-hidden="true">
-      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
-        <path d="M20 4C11.2 4 4 11.2 4 20s7.2 16 16 16 16-7.2 16-16S28.8 4 20 4zm0 26c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z"/>
-      </svg>
+  <!-- =================== INTRO =================== -->
+  <section id="screen-intro" class="screen active" aria-label="Quiz introduction">
+    <p class="intro-eyebrow">OU Sustainable Energy Systems Certificate</p>
+
+    <h1 class="intro-headline">
+      figure out<br>
+      <span>where you</span><br>
+      fit in this.
+    </h1>
+
+    <p class="intro-body">
+      Oklahoma generates <strong>over 40% of its electricity from wind.</strong> Most people at OU have no idea. The energy sector right now needs writers, skeptics, business minds, people who ask uncomfortable questions, and people who read the fine print. Five questions about how you actually think. You might be surprised where you land.
+    </p>
+
+    <div class="intro-meta">
+      <span class="meta-chip">
+        <svg class="icon-inline" width="14" height="14" aria-hidden="true"><use href="#icon-questions"/></svg>
+        5 questions
+      </span>
+      <span class="meta-chip">
+        <svg class="icon-inline" width="14" height="14" aria-hidden="true"><use href="#icon-clock"/></svg>
+        About 3 minutes
+      </span>
     </div>
-    <div class="wordmark-text">
-      <strong>Sustainable Energy Systems</strong><br>
-      University of Oklahoma
+
+    <button class="btn-start" id="btn-start" type="button">
+      Take the quiz
+      <svg class="icon-inline" width="18" height="18" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+    </button>
+
+    <p class="intro-disclaimer">No data collected. No email required. Just a quiz.</p>
+
+    <div class="intro-deco"><span class="intro-deco-text">ou.edu/mcee/ses</span></div>
+  </section>
+
+  <!-- =================== QUIZ =================== -->
+  <section id="screen-quiz" class="screen" aria-label="Quiz questions" aria-live="polite">
+    <div class="progress-wrap" role="progressbar" aria-valuemin="0" aria-valuemax="5" id="progress-bar" aria-label="Quiz progress">
+      <div class="progress-top">
+        <span class="progress-label">Progress</span>
+        <span class="progress-count" id="progress-count">1 of 5</span>
+      </div>
+      <div class="progress-track">
+        <div class="progress-fill" id="progress-fill" style="width: 0%"></div>
+      </div>
     </div>
-  </div>
 
-  <div id="app"></div>
+    <div class="question-block" id="question-block">
+      <!-- Populated by JS -->
+    </div>
 
-</main>
+    <nav class="quiz-nav" aria-label="Question navigation">
+      <button class="btn-back" id="btn-back" type="button" aria-label="Go back to previous question">
+        <svg class="icon-inline" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-left"/></svg>
+        Back
+      </button>
+      <button class="btn-next" id="btn-next" type="button" aria-disabled="true">
+        Next
+        <svg class="icon-inline" width="16" height="16" aria-hidden="true"><use href="#icon-arrow-right"/></svg>
+      </button>
+    </nav>
+  </section>
+
+  <!-- =================== RESULT =================== -->
+  <section id="screen-result" class="screen" aria-label="Your result" aria-live="polite">
+    <div class="result-reveal" id="result-content">
+      <!-- Populated by JS -->
+    </div>
+  </section>
+
+</div>
 
 <script>
+/* =====================================================================
+   QUIZ DATA
+   All questions, options, scores, and result content lives here.
+   Edit copy/scores freely without touching layout code.
+   ===================================================================== */
+
+const CATEGORIES = {
+  STEM: 'stem',
+  COMM: 'comm',
+  BIZ:  'biz',
+  POL:  'policy',
+  EQ:   'equity'
+};
+
 const QUESTIONS = [
   {
-    kicker: "How you think",
-    text: "A community is debating whether to build a wind farm on the edge of town. What question do you immediately want answered?",
-    opts: [
-      { icon: "ti-circuit-cell", text: "How much energy will it generate, and what's the grid integration plan?", tag: "stem" },
-      { icon: "ti-speakerphone", text: "How do we explain this to residents so they actually trust the outcome?", tag: "comm" },
-      { icon: "ti-chart-line", text: "What are the economic ripple effects — jobs, land leases, tax base?", tag: "biz" },
-      { icon: "ti-scale", text: "Who has legal standing here, and what permits or opposition will emerge?", tag: "policy" },
-      { icon: "ti-users", text: "Which neighborhoods benefit and which ones bear the costs?", tag: "social" }
+    id: 1,
+    eyebrow: "First things first",
+    text: "Your roommate texts you: \"did you know oklahoma gets like 40% of its electricity from wind?\" Your honest response is:",
+    sub: null,
+    options: [
+      {
+        text: "\"wait actually how does that work, where does the energy go when nobody's using it\"",
+        scores: { stem: 4, policy: 1 }
+      },
+      {
+        text: "\"that's kind of a crazy story that nobody's telling, why does everyone think oklahoma is just oil\"",
+        scores: { comm: 4, equity: 1 }
+      },
+      {
+        text: "\"ok so who's making money off that, like is this a good time to get into that industry\"",
+        scores: { biz: 4, stem: 1 }
+      },
+      {
+        text: "\"interesting, i wonder how the state decided who gets to build those and on whose land\"",
+        scores: { policy: 4, biz: 1 }
+      },
+      {
+        text: "\"do the towns where those wind turbines are actually see any of that money or does it all go somewhere else\"",
+        scores: { equity: 4, comm: 1 }
+      },
+      {
+        text: "\"lol i did not know that\" and then you go back to what you were doing",
+        scores: { comm: 2, biz: 2 }
+      }
     ]
   },
   {
-    kicker: "Your instinct",
-    text: "You're handed a 40-page energy report. Where do you start reading?",
-    opts: [
-      { icon: "ti-math-function", text: "The methodology and data appendix — I want to check the numbers.", tag: "stem" },
-      { icon: "ti-writing", text: "The executive summary — I want to know the story they're trying to tell.", tag: "comm" },
-      { icon: "ti-building-bank", text: "The financial projections and market assumptions.", tag: "biz" },
-      { icon: "ti-gavel", text: "The regulatory context and policy recommendations section.", tag: "policy" },
-      { icon: "ti-heart-handshake", text: "The community impact and equity sections.", tag: "social" }
+    id: 2,
+    eyebrow: "Scenario",
+    text: "You and three people get assigned a group project. It's due Friday. By Wednesday night you're the only one who has done literally anything. What have you been working on?",
+    sub: "Be honest. The quiz can tell if you're lying.",
+    options: [
+      {
+        text: "A spreadsheet pulling together every relevant stat you could find. You got annoyed at one of the sources and spent an hour figuring out if it was actually credible.",
+        scores: { stem: 4, policy: 1 }
+      },
+      {
+        text: "The presentation slides, because if it looks bad nobody will believe the content regardless of how good it is.",
+        scores: { comm: 3, biz: 2 }
+      },
+      {
+        text: "An outline of the actual argument -- what's the point, why does it matter, what do we want the audience to walk away thinking.",
+        scores: { comm: 4, equity: 1 }
+      },
+      {
+        text: "A breakdown of the costs involved and a rough pitch for why this matters from a practical standpoint. You already looked up two companies doing similar work.",
+        scores: { biz: 4, stem: 1 }
+      },
+      {
+        text: "Notes on the background and context. You read four articles before you felt ready to write a single sentence, which, sure, is a personality trait.",
+        scores: { policy: 4, comm: 1 }
+      },
+      {
+        text: "A document mapping out who's actually affected by whatever you're studying and whether the project is asking the right questions at all.",
+        scores: { equity: 4, policy: 1 }
+      }
     ]
   },
   {
-    kicker: "Pick your path",
-    text: "Which opportunity would you jump at?",
-    opts: [
-      { icon: "ti-microscope", text: "Research fellowship — studying battery storage or carbon sequestration technology", tag: "stem" },
-      { icon: "ti-microphone-2", text: "Media internship — covering the politics and culture of the energy transition", tag: "comm" },
-      { icon: "ti-briefcase", text: "Finance rotation — evaluating clean energy investments and ESG portfolios", tag: "biz" },
-      { icon: "ti-building-community", text: "Government internship — working on state or federal energy policy", tag: "policy" },
-      { icon: "ti-plant", text: "Nonprofit role — working on energy access and climate justice in Oklahoma", tag: "social" }
+    id: 3,
+    eyebrow: "Real talk",
+    text: "Pick the sentence that made you go \"...ok yeah that's me.\" One of them will.",
+    sub: null,
+    options: [
+      {
+        text: "I won't have an opinion out loud until I've actually looked into it. I've been wrong before.",
+        scores: { stem: 4, policy: 1 }
+      },
+      {
+        text: "I notice when something is being framed to make you feel a certain way before you've had a chance to think.",
+        scores: { comm: 4, equity: 1 }
+      },
+      {
+        text: "My first question about any new idea is whether it can actually survive contact with reality.",
+        scores: { biz: 4, stem: 1 }
+      },
+      {
+        text: "I'm the one who reads the thing everyone else skimmed. Usually that's where all the interesting stuff is anyway.",
+        scores: { policy: 4, comm: 1 }
+      },
+      {
+        text: "Whenever something gets described as good for everyone I immediately want to know who specifically they mean by everyone.",
+        scores: { equity: 4, policy: 1 }
+      },
+      {
+        text: "I'm better at getting people on the same page than I am at any one specific thing. That's not nothing.",
+        scores: { comm: 3, equity: 2 }
+      }
     ]
   },
   {
-    kicker: "Real talk",
-    text: "Someone says \"the energy transition is inevitable.\" Your honest reaction?",
-    opts: [
-      { icon: "ti-atom", text: "Maybe — but only if we solve the storage and materials science problems first.", tag: "stem" },
-      { icon: "ti-message-circle-2", text: "Possibly — but public trust and narrative framing will determine the pace.", tag: "comm" },
-      { icon: "ti-coin", text: "When the economics consistently pencil out, it will happen — not before.", tag: "biz" },
-      { icon: "ti-flag", text: "Only if policy frameworks keep up with the technology.", tag: "policy" },
-      { icon: "ti-world", text: "It depends entirely on who's making the decisions and who gets left behind.", tag: "social" }
+    id: 4,
+    eyebrow: "Scenario",
+    text: "A new solar project is coming to a small town two hours outside of Norman. Half the town is excited. Half is furious. Local news asks you to explain what's actually going on. You say:",
+    sub: "First thing that comes to mind.",
+    options: [
+      {
+        text: "\"Most of the arguments against it are based on stuff that isn't technically accurate. The actual data would clear up like 60% of the fight.\"",
+        scores: { stem: 4, policy: 1 }
+      },
+      {
+        text: "\"Both sides are talking past each other. The project people are leading with megawatts and the locals are talking about their town. Those are completely different conversations.\"",
+        scores: { comm: 4, equity: 2 }
+      },
+      {
+        text: "\"The town has nothing in writing that says they benefit. Of course they're skeptical. Would you trust it?\"",
+        scores: { biz: 4, policy: 1 }
+      },
+      {
+        text: "\"Someone approved this without a clear public process and now they're surprised there's backlash. This is a process failure more than anything else.\"",
+        scores: { policy: 4, biz: 1 }
+      },
+      {
+        text: "\"The people most opposed are probably the ones who weren't involved in the decision and have the least to gain. That's where you'd want to start.\"",
+        scores: { equity: 4, comm: 1 }
+      },
+      {
+        text: "\"Honestly this happens everywhere with any big infrastructure project. People hate change even when it's fine.\"",
+        scores: { biz: 2, stem: 2 }
+      }
     ]
   },
   {
-    kicker: "Oklahoma lens",
-    text: "Oklahoma generates over 40% of its electricity from wind — second in the U.S. What story is missing from that headline?",
-    opts: [
-      { icon: "ti-wind", text: "The engineering challenge of integrating intermittent renewables into an aging grid.", tag: "stem" },
-      { icon: "ti-news", text: "Most Oklahomans don't know this — the communication gap is enormous.", tag: "comm" },
-      { icon: "ti-trending-up", text: "Whether the economic benefits are staying in Oklahoma or flowing elsewhere.", tag: "biz" },
-      { icon: "ti-clipboard-list", text: "How state energy policy enabled this — and what other states can learn.", tag: "policy" },
-      { icon: "ti-home", text: "Whether rural landowners and working-class communities are sharing in the gains.", tag: "social" }
+    id: 5,
+    eyebrow: "Last one",
+    text: "Five years from now, which version of yourself sounds like it could actually happen?",
+    sub: "Not the most impressive option. The one that actually sounds like you.",
+    options: [
+      {
+        text: "You're the person a team turns to when they need to know if a number is real. You've caught things that would have been embarrassing.",
+        scores: { stem: 4, biz: 1 }
+      },
+      {
+        text: "You work in communications or media and you've made genuinely complicated topics land for people who had no reason to care before they read your thing.",
+        scores: { comm: 4, equity: 1 }
+      },
+      {
+        text: "You're on the business or development side -- projects, deals, whether something is actually going to work in the real world.",
+        scores: { biz: 4, policy: 1 }
+      },
+      {
+        text: "You work on policy, regulation, or law -- the rules that shape what's actually possible. Slow, but the stuff you touch outlasts you.",
+        scores: { policy: 4, biz: 1 }
+      },
+      {
+        text: "You do research or advocacy work focused on whether this whole transition is actually fair and who it's leaving behind.",
+        scores: { equity: 4, comm: 1 }
+      },
+      {
+        text: "Unclear, honestly, but you want it to be something that matters and that you're good at. Still figuring out the specifics.",
+        scores: { equity: 2, comm: 2 }
+      }
     ]
   }
 ];
 
+/* ===================================================================
+   RESULT CARDS
+   Each result has: id, theme-class, icon, badge, title, tagline,
+   description, program text, scholarship text, neighbors[]
+   =================================================================== */
 const RESULTS = {
   stem: {
-    icon: "ti-circuit-cell",
-    title: "Energy Systems\nAnalyst",
-    sub: "The architect of how things actually work",
-    grad: "linear-gradient(145deg, #1a2e4a 0%, #0d1e30 60%, #1a3a2a 100%)",
-    tags: ["Systems thinking", "Technical depth", "Problem-solver"],
-    about: "You're drawn to the mechanics — the how behind the why. Whether it's grid resilience, carbon capture, battery chemistry, or geothermal potential, you want to understand the system from the inside out. That kind of thinking doesn't stay in labs; it shapes policy, investment, and the physical infrastructure of the future.",
-    ses: "SES gives your technical skills a richer context. The engineers and scientists who shape real decisions are the ones who can explain tradeoffs across economic, social, and policy dimensions — not just optimize within them. Our core courses were designed with that exact gap in mind.",
-    discipline: "Engineering · Geosciences · Physics · Environmental Science"
+    id: 'stem',
+    themeClass: 'result-stem',
+    iconId: 'icon-stem',
+    badge: 'The One Who Figures Out How It Works',
+    title: 'The Problem Solver',
+    tagline: "You want to know how the machine actually works. Not the brochure version. The real version.",
+    majors: "Atmospheric science, meteorology, chemical engineering, mechanical engineering, geology, physics, math, environmental science, computer science, geography",
+    description: "When someone says 'studies show,' your first thought is which study, not wow. You'd rather be slow and right than fast and wrong, and you've probably already been burned once by trusting a number that didn't hold up. That's not a bad quality. It's the quality that makes you useful in a room full of people with strong opinions and weak evidence. The energy sector runs on models, projections, and a lot of educated guessing -- and it genuinely needs people who can look at all of that and say 'actually, hold on.' Atmospheric scientists model the weather systems that determine how much wind power a region can reliably produce. Geologists assess where energy resources actually are. Chemical and mechanical engineers design the systems that convert, store, and move energy. Environmental scientists track what all of it does to the places it touches. If you're wired to understand systems at a technical level, this is a field that will not run out of hard problems.",
+    program: "Oklahoma ranks second in the US for wind energy resources and already generates over 40% of its electricity from wind -- and there's a whole infrastructure of analysis, modeling, and engineering behind that number that most people never see. The SES Certificate is 15 credits with electives in technology, data, systems, and policy. Two core courses give you the cross-sector vocabulary to work with people who think completely differently than you do. Open to every major, students from over 10 colleges at OU.",
+    scholarship: "20 undergraduate scholarship awards for 2026-27, up to $1,000 each, paid in $250 increments as you go. No GPA minimum. SES@ou.edu, ou.edu/mcee/ses.",
+    neighbors: [
+      {
+        title: 'The Deal Maker',
+        note: "They need to know if it actually works before they pitch it. That's your job."
+      },
+      {
+        title: 'The Rule Writer',
+        note: "They can't write a good regulation for something they don't understand. You explain what's physically possible."
+      }
+    ]
   },
   comm: {
-    icon: "ti-speakerphone",
-    title: "Climate\nCommunicator",
-    sub: "The translator between expertise and the public",
-    grad: "linear-gradient(145deg, #1a3a2a 0%, #0d2a1a 60%, #2a1a0a 100%)",
-    tags: ["Narrative fluency", "Public trust", "Cross-disciplinary"],
-    about: "The energy transition will be won or lost on communication. Technical solutions that can't be explained, understood, or trusted don't get built. You have a rare ability to translate complexity into clarity — and that skill is in genuinely short supply in every energy room that matters.",
-    ses: "SES gives your communications work substance. Understanding how energy systems actually function — technically, economically, politically — means your storytelling is grounded in something real. Journalists, PR professionals, and educators in SES don't just learn to talk about energy; they learn to think about it.",
-    discipline: "Journalism · Public Relations · English · Education · Fine Arts"
+    id: 'comm',
+    themeClass: 'result-comm',
+    iconId: 'icon-comm',
+    badge: 'The One Who Makes People Actually Care',
+    title: 'The Storyteller',
+    tagline: "You thought about how to explain it before you finished reading it.",
+    majors: "Journalism, English, communications, advertising, PR, film & media studies, marketing, history, philosophy, creative writing, rhetoric",
+    description: "You can tell when something is being framed to make you feel a certain way before anyone explains that to you. You've also always been able to take something dense and find the version of it that a person would actually want to read. That's the skill. Here's the context you might not have: the energy sector is genuinely bad at communication. Wind farms get rejected by communities who were never told how they'd benefit. Climate policy stalls because nobody's explained it in a language that sticks. Investigative journalists are exposing industry practices that regulators missed for years. Filmmakers and designers are shaping how millions of people think about what's possible. History majors understand why energy transitions have succeeded or failed before, which turns out to predict a lot. Philosophy majors are the ones asking whether any of this is being done ethically. The gap between what's technically possible and what people will actually support is a communication problem. You're the person who can close it.",
+    program: "The SES Certificate's communications track is built for exactly this -- giving you the content knowledge to back up the narrative skills you already have. 15 credits, two core courses, three electives across communications, policy, and social context. You don't need to become an engineer. You need to know enough to not get steamrolled by one. Students from journalism, English, film, and PR are all in this program.",
+    scholarship: "20 scholarships for 2026-27, up to $1,000 each, no GPA minimum, paid in $250 increments. SES@ou.edu, ou.edu/mcee/ses.",
+    neighbors: [
+      {
+        title: 'The Justice Lens',
+        note: "They find the stories that need telling. You figure out how to make people actually read them."
+      },
+      {
+        title: 'The Rule Writer',
+        note: "They write the policy. You translate it into something a person outside government would care about."
+      }
+    ]
   },
   biz: {
-    icon: "ti-chart-line",
-    title: "Energy\nStrategist",
-    sub: "The one who makes the economics real",
-    grad: "linear-gradient(145deg, #2a1a05 0%, #1a0f00 60%, #1a2a3a 100%)",
-    tags: ["Market literacy", "Strategic analysis", "Impact investing"],
-    about: "Clean energy is one of the largest capital reallocation events in history. It needs people who understand markets, can model risk, and know when a deal is actually a deal. Business students who understand energy systems are the ones building the financial architecture of the transition — not just watching it happen.",
-    ses: "SES connects your analytical instincts to the specific dynamics of energy markets — carbon pricing, project finance, ESG frameworks, and industrial decarbonization. Price College students bring something most energy rooms are missing: economic rigor that isn't afraid of complexity.",
-    discipline: "Finance · Accounting · Management · Economics · Supply Chain"
+    id: 'biz',
+    themeClass: 'result-biz',
+    iconId: 'icon-biz',
+    badge: 'The One Who Makes It Actually Happen',
+    title: 'The Deal Maker',
+    tagline: "You want to know if it works in the real world. 'Theoretically viable' doesn't pay anyone.",
+    majors: "Finance, accounting, economics, business administration, supply chain, management, entrepreneurship, industrial engineering, international business, pre-MBA",
+    description: "You're not cynical. You're just practical. An idea that can't survive contact with a budget isn't an idea yet -- it's a wish. The energy transition is the largest capital reallocation in modern history, and it needs people who understand how projects get financed, where the risk sits, what a reasonable return looks like, and how to spot the deals that sound good but aren't. That's not a small thing. Solar farms, wind projects, battery storage facilities, grid upgrades -- none of that gets built without someone running the numbers and convincing investors it's worth doing. Supply chain managers are figuring out how to source materials for a technology build-out that didn't exist fifteen years ago. Entrepreneurs are starting companies in spaces that barely have names yet. Accountants are tracking the tax structures that make or break whether a project pencils. The business case for clean energy is real, but someone has to actually make it.",
+    program: "The SES Certificate gives you the technical and policy context to sit in energy business conversations without getting lost. 15 credits, business and economics electives alongside core courses that explain how the systems actually work. Energy is one of the few sectors where being 23 with real cross-sector knowledge gets you into rooms that matter early. Open to all majors.",
+    scholarship: "Up to $1,000, 20 awards, no GPA minimum, paid in $250 increments as you complete courses. SES@ou.edu, ou.edu/mcee/ses.",
+    neighbors: [
+      {
+        title: 'The Problem Solver',
+        note: "They catch the technical assumptions in your model that would blow up later. Worth the conversation."
+      },
+      {
+        title: 'The Rule Writer',
+        note: "You need them to know what's legal before you close anything."
+      }
+    ]
   },
   policy: {
-    icon: "ti-scale",
-    title: "Energy Policy\nArchitect",
-    sub: "The one who changes what's possible",
-    grad: "linear-gradient(145deg, #1a1a3a 0%, #0d0d28 60%, #1a2a3a 100%)",
-    tags: ["Systems navigation", "Regulatory fluency", "Strategic advocacy"],
-    about: "Every turbine that gets built, every pipeline that gets permitted, every tax credit that unlocks a project — behind all of it is a policy decision. You understand that the energy transition isn't just a technical or economic challenge; it's a governance challenge. Pre-law, political science, and public administration students are far more central to energy's future than they're often told.",
-    ses: "SES gives you deep fluency in the governance of energy systems — how regulation works, how markets are shaped by law, and how advocacy intersects with technical reality. OU Law and Political Science faculty are embedded in the program for exactly this reason.",
-    discipline: "Pre-Law · Political Science · Public Admin · International Studies"
+    id: 'policy',
+    themeClass: 'result-policy',
+    iconId: 'icon-policy',
+    badge: 'The One Who Reads the Fine Print',
+    title: 'The Rule Writer',
+    tagline: "You read the footnotes. That's not a quirk. That's the job.",
+    majors: "Political science, pre-law, public administration, history, international studies, economics, philosophy, sociology, Native American studies, geography, criminal justice",
+    description: "You've caught things other people missed because they skimmed. You want to know not just what a rule says but where it came from, who it protects, and what it quietly allows that nobody's talking about. That instinct is valuable and increasingly rare. Energy policy is one of the most genuinely tangled regulatory spaces in the country -- federal oversight, state jurisdiction, tribal land rights, utility monopolies, environmental review, and international trade agreements all collide in a single infrastructure project. History majors understand how past energy transitions played out and who got left behind. Philosophy majors are asking whether carbon markets are ethically coherent or just accounting tricks. International studies students are watching how countries negotiate energy independence. Native American studies students know that energy extraction has a specific and documented history on tribal lands that every policymaker should understand. Pre-law students are learning that energy law is one of the fastest-growing specializations in the country. The rules that govern this system shape everything else. Someone has to write them well.",
+    program: "The SES Certificate's policy and law tracks are yours. Two core courses give you the technical and economic foundation -- you can't write good rules for things you don't understand -- and three electives let you go deep into regulation, energy law, and governance. 15 credits, all majors welcome, students from over 10 colleges at OU.",
+    scholarship: "20 awards for 2026-27, $1,000 each, paid in $250 increments, no GPA minimum. ou.edu/mcee/ses, SES@ou.edu.",
+    neighbors: [
+      {
+        title: 'The Problem Solver',
+        note: "They tell you what's technically possible. You need that before you write the rule that requires it."
+      },
+      {
+        title: 'The Justice Lens',
+        note: "They tell you who the policy actually affects in practice. That question belongs in the room when you're drafting."
+      }
+    ]
   },
-  social: {
-    icon: "ti-users",
-    title: "Energy Equity\nResearcher",
-    sub: "The one who keeps the human cost in the room",
-    grad: "linear-gradient(145deg, #0a2a1a 0%, #051a10 60%, #1a2a1a 100%)",
-    tags: ["Equity analysis", "Community focus", "Interdisciplinary"],
-    about: "Every energy decision has a human dimension that technical reports tend to bury in footnotes. Who bears the burden of pollution? Who benefits from the boom? Whose land gets leased and whose neighborhood gets bypassed? You ask those questions instinctively — and the energy sector desperately needs people who won't stop asking them.",
-    ses: "SES was designed knowing that sociology, public health, geography, art, and education students bring something irreplaceable: they center the people that systems often forget. Our student-led Art + Energy exhibit and battery recycling research were driven by students exactly like you.",
-    discipline: "Sociology · Psychology · Geography · Public Health · Fine Arts"
+  equity: {
+    id: 'equity',
+    themeClass: 'result-equity',
+    iconId: 'icon-equity',
+    badge: 'The One Asking the Question Nobody Else Is',
+    title: 'The Justice Lens',
+    tagline: "You're asking who this actually helps before anyone else thought to ask.",
+    majors: "Sociology, social work, public health, fine arts, education, anthropology, philosophy, African American studies, Native American studies, women's & gender studies, religious studies, psychology",
+    description: "The question you keep asking -- who benefits here, who bears the cost, whose neighborhood gets the power plant instead of the solar panels -- is not a soft question. It's the one that determines whether any of this is actually worth doing. Fine arts students are visualizing energy futures in ways that data never could and designing the public-facing materials that shape whether communities trust a project or fight it. Education majors are thinking about how the next generation learns about climate and energy -- which turns out to determine a lot about what gets politically possible. Social work students understand how energy insecurity (not being able to pay your electric bill, living near industrial pollution) connects to every other crisis their clients are dealing with. Psychologists are studying how people form beliefs about climate change and what actually shifts them. Anthropologists are documenting how energy transitions reshape communities and cultures. Religious studies students are engaging faith communities that are often the most trusted voices in the rooms where energy decisions get made. The energy sector has spent decades not asking your question. It shows. You're the person who changes that.",
+    program: "The SES Certificate's social aspects track is built for this, alongside core courses that give you enough technical and economic context to make your work legible to the engineers, lawyers, and financiers who need to hear it. 15 credits, all majors, students from over 10 colleges including fine arts, social work, education, and public health.",
+    scholarship: "20 scholarships for 2026-27, up to $1,000 each, no GPA minimum, paid in $250 increments. SES@ou.edu, ou.edu/mcee/ses.",
+    neighbors: [
+      {
+        title: 'The Storyteller',
+        note: "You find the story. They figure out how to make people outside your field actually read it."
+      },
+      {
+        title: 'The Rule Writer',
+        note: "Your research is what their policy arguments need to not be hollow."
+      }
+    ]
   }
 };
 
-function tally(answers) {
-  const c = {stem:0,comm:0,biz:0,policy:0,social:0};
-  answers.forEach(t => c[t]++);
-  return Object.entries(c).sort((a,b)=>b[1]-a[1])[0][0];
+/* ===================================================================
+   QUIZ STATE
+   =================================================================== */
+const state = {
+  current: 0,
+  answers: new Array(QUESTIONS.length).fill(null), // index of selected option
+  scores: { stem: 0, comm: 0, biz: 0, policy: 0, equity: 0 }
+};
+
+/* ===================================================================
+   DOM HELPERS
+   =================================================================== */
+const $ = id => document.getElementById(id);
+
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => {
+    s.classList.remove('active');
+    s.setAttribute('aria-hidden', 'true');
+  });
+  const target = $(id);
+  target.classList.add('active');
+  target.removeAttribute('aria-hidden');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-function renderHero() {
-  return `
-    <div class="hero fade-up">
-      <div class="hero-kicker">5 questions · Any major · Find your fit</div>
-      <h1>What's your<br><em>energy role?</em></h1>
-      <p class="hero-desc">The future of sustainable energy needs lawyers, journalists, artists, engineers, and economists — all at the same table. Where do you sit?</p>
-      <div class="hero-pills">
-        <span class="hero-pill"><i class="ti ti-certificate"></i> 15-credit certificate</span>
-        <span class="hero-pill"><i class="ti ti-building-arch"></i> All majors welcome</span>
-        <span class="hero-pill"><i class="ti ti-award"></i> Scholarships available</span>
+/* ===================================================================
+   RENDER QUESTION
+   =================================================================== */
+function renderQuestion(index) {
+  const q = QUESTIONS[index];
+  const block = $('question-block');
+  const selected = state.answers[index];
+  const letters = ['A', 'B', 'C', 'D', 'E', 'F'];
+
+  // Progress
+  const pct = Math.round((index / QUESTIONS.length) * 100);
+  $('progress-fill').style.width = pct + '%';
+  $('progress-count').textContent = `${index + 1} of ${QUESTIONS.length}`;
+  $('progress-bar').setAttribute('aria-valuenow', index + 1);
+
+  // Back button
+  $('btn-back').style.visibility = index === 0 ? 'hidden' : 'visible';
+
+  // Next button label
+  const isLast = index === QUESTIONS.length - 1;
+  $('btn-next').querySelector('svg use').setAttribute('href', '#icon-arrow-right');
+  $('btn-next').childNodes[0].textContent = isLast ? 'See my result ' : 'Next ';
+  if (isLast) {
+    $('btn-next').querySelector('svg use').setAttribute('href', '#icon-arrow-right');
+  }
+
+  // Enable/disable next
+  const hasAnswer = selected !== null;
+  $('btn-next').classList.toggle('enabled', hasAnswer);
+  $('btn-next').setAttribute('aria-disabled', !hasAnswer);
+
+  const optionsHTML = q.options.map((opt, i) => `
+    <li role="none">
+      <button
+        class="option-btn"
+        type="button"
+        role="button"
+        aria-pressed="${selected === i ? 'true' : 'false'}"
+        data-index="${i}"
+      >
+        <span class="option-letter" aria-hidden="true">${letters[i]}</span>
+        <span class="option-text">${opt.text}</span>
+      </button>
+    </li>
+  `).join('');
+
+  block.innerHTML = `
+    <p class="question-eyebrow">${q.eyebrow}</p>
+    <h2 class="question-text">${q.text}</h2>
+    ${q.sub ? `<p class="question-sub">${q.sub}</p>` : ''}
+    <ul class="options-list" role="list" aria-label="Answer options">
+      ${optionsHTML}
+    </ul>
+  `;
+
+  // Rebind option click handlers
+  block.querySelectorAll('.option-btn').forEach(btn => {
+    btn.addEventListener('click', () => selectOption(index, parseInt(btn.dataset.index)));
+  });
+
+  // Animate in
+  block.classList.remove('question-block');
+  void block.offsetWidth; // force reflow
+  block.classList.add('question-block');
+}
+
+/* ===================================================================
+   SELECT OPTION
+   =================================================================== */
+function selectOption(questionIndex, optionIndex) {
+  state.answers[questionIndex] = optionIndex;
+
+  // Update aria-pressed states
+  document.querySelectorAll('.option-btn').forEach((btn, i) => {
+    btn.setAttribute('aria-pressed', i === optionIndex ? 'true' : 'false');
+  });
+
+  // Enable next button
+  $('btn-next').classList.add('enabled');
+  $('btn-next').setAttribute('aria-disabled', 'false');
+}
+
+/* ===================================================================
+   NAVIGATE NEXT
+   =================================================================== */
+function goNext() {
+  const selected = state.answers[state.current];
+  if (selected === null) return;
+
+  const isLast = state.current === QUESTIONS.length - 1;
+
+  if (isLast) {
+    calculateResult();
+    return;
+  }
+
+  state.current++;
+  renderQuestion(state.current);
+}
+
+/* ===================================================================
+   NAVIGATE BACK
+   =================================================================== */
+function goBack() {
+  if (state.current === 0) return;
+  state.current--;
+  renderQuestion(state.current);
+}
+
+/* ===================================================================
+   CALCULATE RESULT
+   =================================================================== */
+function calculateResult() {
+  // Reset scores
+  const scores = { stem: 0, comm: 0, biz: 0, policy: 0, equity: 0 };
+
+  // Tally
+  QUESTIONS.forEach((q, qi) => {
+    const ai = state.answers[qi];
+    if (ai !== null) {
+      const option = q.options[ai];
+      Object.entries(option.scores).forEach(([cat, pts]) => {
+        scores[cat] = (scores[cat] || 0) + pts;
+      });
+    }
+  });
+
+  // Find winner
+  const winner = Object.entries(scores).sort((a, b) => b[1] - a[1])[0][0];
+  showResult(winner);
+}
+
+/* ===================================================================
+   SHOW RESULT
+   =================================================================== */
+function showResult(resultKey) {
+  const r = RESULTS[resultKey];
+  const iconMap = {
+    stem: 'icon-stem',
+    comm: 'icon-comm',
+    biz: 'icon-biz',
+    policy: 'icon-policy',
+    equity: 'icon-equity'
+  };
+
+  const neighborsHTML = r.neighbors.map(n => `
+    <div class="neighbor-card">
+      <p class="neighbor-title">${n.title}</p>
+      <p class="neighbor-note">${n.note}</p>
+    </div>
+  `).join('');
+
+  const majorsHTML = r.majors.split(', ').map(m => `<span class="major-pill">${m}</span>`).join('');
+
+  $('result-content').innerHTML = `
+    <div class="result-card ${r.themeClass}">
+      <div class="result-card-hero">
+        <div class="result-badge">
+          <svg class="icon-inline" width="16" height="16" aria-hidden="true"><use href="#${iconMap[resultKey]}"/></svg>
+          ${r.badge}
+        </div>
+        <h1 class="result-title">${r.title}</h1>
+        <p class="result-tagline">${r.tagline}</p>
+      </div>
+      <div class="result-majors-strip">
+        <p class="result-majors-label">Fits well with</p>
+        <div class="result-majors-list">${majorsHTML}</div>
+      </div>
+      <div class="result-card-body">
+        <div class="result-section">
+          <p class="result-section-label">Your type</p>
+          <p class="result-description">${r.description}</p>
+        </div>
+        <div class="result-section">
+          <p class="result-section-label">Why SES fits</p>
+          <p class="result-program">${r.program}</p>
+        </div>
+        <div class="result-section">
+          <p class="result-section-label">Scholarship</p>
+          <div class="scholarship-block">
+            <svg class="icon-inline scholarship-icon" width="20" height="20" aria-hidden="true"><use href="#icon-dollar"/></svg>
+            <div class="scholarship-text">
+              <strong>Up to $1,000 available for 2026-27</strong>
+              ${r.scholarship}
+            </div>
+          </div>
+        </div>
+        <div class="result-section">
+          <p class="result-section-label">Closest neighbors</p>
+          <div class="neighbors-grid">
+            ${neighborsHTML}
+          </div>
+        </div>
       </div>
     </div>
-    <div class="scholarship-banner fade-up" style="animation-delay:.1s">
-      <i class="ti ti-coin"></i>
-      <p><strong>Scholarships available for 2026–27.</strong> Up to $1,000 for undergraduate students — awarded as you progress through the certificate. No minimum GPA. Any major.</p>
-    </div>`;
-}
 
-function renderQuestion(qi, answers) {
-  const q = QUESTIONS[qi];
-  const pct = Math.round((qi / QUESTIONS.length) * 100);
-  return `
-    <div class="fade-up">
-      <div class="prog-wrap">
-        <div class="prog-top">
-          <span class="prog-label">Question ${qi+1} of ${QUESTIONS.length}</span>
-          <span class="prog-num">${pct}%</span>
-        </div>
-        <div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>
-      </div>
-      <div class="q-card">
-        <div class="q-kicker">${q.kicker}</div>
-        <p class="q-text">${q.text}</p>
-        <div class="opts" id="opts">
-          ${q.opts.map((o,i) => `
-            <button class="opt" data-tag="${o.tag}" data-i="${i}" aria-pressed="false">
-              <span class="opt-icon"><i class="ti ${o.icon}" aria-hidden="true"></i></span>
-              <span class="opt-text">${o.text}</span>
-            </button>`).join('')}
-        </div>
-      </div>
-      <button class="next-btn" id="next-btn" aria-label="${qi < QUESTIONS.length-1 ? 'Next question' : 'See your result'}">
-        ${qi < QUESTIONS.length-1 ? 'Continue' : 'See my result'}
-        <i class="ti ti-arrow-right" aria-hidden="true"></i>
+    <p class="email-nudge">Still not sure if it fits your major? Nova can answer that in about five minutes. No commitment, no pitch.</p>
+    <a class="btn-email"
+       href="mailto:SES@ou.edu?subject=Curious%20about%20the%20SES%20Certificate&body=Hi%20Nova%2C%0A%0AI%20just%20took%20the%20SES%20energy%20quiz%20and%20I%20got%20%22${r.title}%22%20%E2%80%94%20which%20honestly%20makes%20sense.%20I%27m%20curious%20whether%20the%20SES%20Certificate%20might%20fit%20into%20my%20degree%20program.%20Can%20we%20meet%20about%20it%3F%0A%0AThanks"
+       aria-label="Email SES to ask about the certificate">
+      <span class="btn-email-icon" aria-hidden="true">
+        <svg width="18" height="18" aria-hidden="true"><use href="#icon-envelope"/></svg>
+      </span>
+      <span class="btn-email-copy">
+        <strong>Ask if it fits your major</strong>
+        <span>Opens an email to Nova at SES@ou.edu. Takes about 10 seconds.</span>
+      </span>
+    </a>
+
+    <div class="result-footer">
+      <button class="btn-retake" id="btn-retake" type="button">
+        <svg class="icon-inline" width="15" height="15" aria-hidden="true"><use href="#icon-refresh"/></svg>
+        Retake
       </button>
-    </div>`;
+      <a class="btn-website" href="https://ou.edu/mcee/ses" target="_blank" rel="noopener noreferrer">
+        See the certificate
+        <svg class="icon-inline" width="14" height="14" aria-hidden="true"><use href="#icon-external"/></svg>
+      </a>
+    </div>
+  `;
+
+  $('btn-retake').addEventListener('click', resetQuiz);
+
+  showScreen('screen-result');
 }
 
-function renderResult(key) {
-  const r = RESULTS[key];
-  const titleLines = r.title.split('\n');
-  return `
-    <div class="fade-up">
-      <div class="result-hero" style="background:${r.grad}">
-        <div class="result-hero-inner">
-          <div class="result-icon-wrap" aria-hidden="true"><i class="ti ${r.icon}"></i></div>
-          <div class="result-eyebrow">Your energy role</div>
-          <h2 class="result-title">${titleLines[0]}<br>${titleLines[1]}</h2>
-          <p class="result-sub">${r.sub}</p>
-          <div class="result-tags">
-            ${r.tags.map(t=>`<span class="rtag">${t}</span>`).join('')}
-          </div>
-        </div>
-      </div>
-
-      <div class="result-body">
-        <div class="rcard">
-          <div class="rcard-label"><i class="ti ti-user-circle" aria-hidden="true"></i> What this looks like for you</div>
-          <p>${r.about}</p>
-        </div>
-
-        <div class="nudge-card">
-          <div class="rcard-label"><i class="ti ti-arrow-merge-left" aria-hidden="true"></i> Why SES fits your path</div>
-          <p>${r.ses}</p>
-        </div>
-
-        <div class="rcard">
-          <div class="rcard-label"><i class="ti ti-books" aria-hidden="true"></i> Students like you already here</div>
-          <p><strong>Majors from:</strong> ${r.discipline}</p>
-        </div>
-
-        <div class="schol-card">
-          <div class="schol-icon"><i class="ti ti-award" aria-hidden="true"></i></div>
-          <div class="schol-text">
-            <div class="schol-title">Scholarships available — no GPA minimum</div>
-            <p>Up to <strong>$1,000</strong> for undergraduates who enroll in the SES Certificate. Awards are paid out as you reach milestones — so your commitment is rewarded step by step. <strong>20 awards available for 2026–27.</strong></p>
-          </div>
-        </div>
-
-        <div class="btn-row">
-          <a href="https://ou.edu/mcee/ses" target="_blank" rel="noopener" class="btn-cta">Explore the SES program</a>
-          <a href="mailto:SES@ou.edu" class="btn-cta outline">Email SES@ou.edu</a>
-        </div>
-        <button class="btn-cta outline" onclick="init()" style="margin-top:.25rem">Retake the quiz</button>
-      </div>
-
-      <p class="quiz-footer">
-        <a href="https://ou.edu/mcee/ses">ou.edu/mcee/ses</a> &nbsp;·&nbsp; SES@ou.edu<br>
-        Sustainable Energy Systems Certificate · University of Oklahoma
-      </p>
-    </div>`;
+/* ===================================================================
+   RESET QUIZ
+   =================================================================== */
+function resetQuiz() {
+  state.current = 0;
+  state.answers.fill(null);
+  showScreen('screen-quiz');
+  renderQuestion(0);
 }
 
-let state = { phase: 'hero', qi: 0, answers: [] };
+/* ===================================================================
+   INIT
+   =================================================================== */
+document.addEventListener('DOMContentLoaded', () => {
+  $('btn-start').addEventListener('click', () => {
+    showScreen('screen-quiz');
+    renderQuestion(0);
+  });
 
-function init() {
-  state = { phase: 'hero', qi: 0, answers: [] };
-  paint();
-}
-
-function startQuiz() {
-  state.phase = 'quiz';
-  paint();
-}
-
-function paint() {
-  const app = document.getElementById('app');
-  if (state.phase === 'hero') {
-    app.innerHTML = renderHero();
-    // start button is the hero itself — add a CTA
-    const hero = app.querySelector('.hero');
-    const btn = document.createElement('button');
-    btn.className = 'next-btn';
-    btn.style.display = 'block';
-    btn.style.marginTop = '1rem';
-    btn.innerHTML = 'Find your energy role <i class="ti ti-arrow-right" aria-hidden="true"></i>';
-    btn.addEventListener('click', startQuiz);
-    hero.appendChild(btn);
-  } else if (state.phase === 'quiz') {
-    app.innerHTML = renderQuestion(state.qi, state.answers);
-    // wire up options
-    app.querySelectorAll('.opt').forEach(btn => {
-      btn.addEventListener('click', () => {
-        app.querySelectorAll('.opt').forEach(b => { b.classList.remove('sel'); b.setAttribute('aria-pressed','false'); });
-        btn.classList.add('sel');
-        btn.setAttribute('aria-pressed','true');
-        const nb = document.getElementById('next-btn');
-        nb.style.display = 'block';
-        nb._tag = btn.dataset.tag;
-      });
-    });
-    document.getElementById('next-btn').addEventListener('click', function() {
-      if (!this._tag) return;
-      state.answers.push(this._tag);
-      if (state.qi < QUESTIONS.length - 1) {
-        state.qi++;
-        state.phase = 'quiz';
-        paint();
-        window.scrollTo({top: 0, behavior: 'smooth'});
-      } else {
-        state.phase = 'result';
-        paint();
-        window.scrollTo({top: 0, behavior: 'smooth'});
-      }
-    });
-  } else if (state.phase === 'result') {
-    const key = tally(state.answers);
-    app.innerHTML = renderResult(key);
-  }
-}
-
-init();
+  $('btn-next').addEventListener('click', goNext);
+  $('btn-back').addEventListener('click', goBack);
+});
 </script>
 </body>
 </html>
