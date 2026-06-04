@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="description" content="Find your place in the energy future. A quiz for University of Oklahoma students — any major welcome.">
+<meta property="og:title" content="What's Your Energy Role? · OU SES">
+<meta property="og:description" content="The future of energy needs every discipline. 5 questions to find your fit.">
+<meta property="og:image" content="https://ou.edu/content/dam/homepage/og-image.jpg">
+<title>What's Your Energy Role? · OU SES Certificate</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@2.44.0/tabler-icons.min.css">
+
+<style>
+/* ── tokens ── */
+:root {
+  --crimson: #8B1A1A;
+  --crimson-dark: #5a0d0d;
+  --crimson-light: #fdf0f0;
+  --cream: #faf7f2;
+  --forest: #1d3a2a;
+  --slate: #1e2a38;
+  --gold: #c8922a;
+  --text: #1a1a1a;
+  --text-muted: #5a5a5a;
+  --border: rgba(0,0,0,.1);
+  --r: 14px;
+  --r-sm: 9px;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --sans: 'DM Sans', system-ui, sans-serif;
+  --shadow: 0 4px 24px rgba(0,0,0,.10);
+  --shadow-lg: 0 12px 48px rgba(0,0,0,.18);
+}
+
+/* ── reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--sans);
+  font-size: 16px;
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--cream);
+}
+
+/* ── page background ── */
+.page-bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 10% 0%, rgba(139,26,26,.22) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 50% at 90% 100%, rgba(29,58,42,.20) 0%, transparent 60%),
+    radial-gradient(ellipse 40% 40% at 50% 50%, rgba(200,146,42,.07) 0%, transparent 70%),
+    var(--cream);
+}
+.page-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(circle at 1px 1px, rgba(139,26,26,.06) 1px, transparent 0);
+  background-size: 32px 32px;
+}
+
+/* ── layout ── */
+.wrap {
+  position: relative;
+  z-index: 1;
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 1.25rem 1rem 3rem;
+}
+
+/* ── wordmark ── */
+.wordmark {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 1.5rem;
+}
+.wordmark-ou {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--crimson);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.wordmark-ou svg { width: 20px; height: 20px; fill: white; }
+.wordmark-text { font-size: 12px; font-weight: 400; color: var(--text-muted); line-height: 1.3; letter-spacing: .02em; }
+.wordmark-text strong { font-weight: 500; color: var(--text); }
+
+/* ── hero card ── */
+.hero {
+  background: var(--crimson-dark);
+  border-radius: 20px;
+  padding: 1.75rem 1.5rem 1.75rem;
+  margin-bottom: 1rem;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 220px; height: 220px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(200,146,42,.25) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40px; left: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(29,58,42,.40) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-kicker {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  margin-bottom: .75rem;
+}
+.hero h1 {
+  font-family: var(--serif);
+  font-size: clamp(28px, 7vw, 38px);
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: 1rem;
+}
+.hero h1 em {
+  font-style: italic;
+  color: #f5c878;
+}
+.hero-desc {
+  font-size: 14px;
+  color: rgba(255,255,255,.72);
+  line-height: 1.65;
+  margin-bottom: 1.25rem;
+  max-width: 340px;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+.hero-pill {
+  font-size: 12px;
+  padding: 5px 11px;
+  border-radius: 99px;
+  border: 0.5px solid rgba(255,255,255,.22);
+  color: rgba(255,255,255,.82);
+  background: rgba(255,255,255,.08);
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.hero-pill i { font-size: 13px; }
+
+/* ── scholarship banner ── */
+.scholarship-banner {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-left: 3px solid var(--gold);
+  border-radius: var(--r-sm);
+  padding: .85rem 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  box-shadow: var(--shadow);
+}
+.scholarship-banner i {
+  font-size: 18px;
+  color: var(--gold);
+  margin-top: 1px;
+  flex-shrink: 0;
+}
+.scholarship-banner p {
+  font-size: 13px;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+.scholarship-banner p strong { color: var(--text); font-weight: 500; }
+
+/* ── progress ── */
+.prog-wrap { margin-bottom: 1rem; }
+.prog-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 7px;
+}
+.prog-label { font-size: 12px; color: var(--text-muted); letter-spacing: .02em; }
+.prog-num { font-size: 12px; font-weight: 500; color: var(--crimson); }
+.prog-track {
+  height: 5px;
+  background: rgba(139,26,26,.12);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.prog-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--crimson), #c0392b);
+  border-radius: 99px;
+  transition: width .5s cubic-bezier(.4,0,.2,1);
+}
+
+/* ── question card ── */
+.q-card {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: 18px;
+  padding: 1.5rem;
+  margin-bottom: .75rem;
+  box-shadow: var(--shadow);
+}
+.q-kicker {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--crimson);
+  margin-bottom: .7rem;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+.q-kicker::before {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 2px;
+  background: var(--crimson);
+  border-radius: 99px;
+}
+.q-text {
+  font-family: var(--serif);
+  font-size: clamp(17px, 4.5vw, 20px);
+  line-height: 1.4;
+  color: var(--text);
+  margin-bottom: 1.25rem;
+}
+.opts { display: flex; flex-direction: column; gap: 8px; }
+.opt {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 14px;
+  border: 0.5px solid var(--border);
+  border-radius: var(--r-sm);
+  background: #fafafa;
+  cursor: pointer;
+  text-align: left;
+  width: 100%;
+  transition: all .15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+.opt:hover, .opt:focus-visible {
+  background: var(--crimson-light);
+  border-color: rgba(139,26,26,.3);
+  outline: none;
+}
+.opt.sel {
+  background: var(--crimson-light);
+  border: 1.5px solid var(--crimson);
+}
+.opt-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 8px;
+  background: rgba(139,26,26,.08);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background .15s;
+}
+.opt-icon i {
+  font-size: 16px;
+  color: var(--crimson);
+}
+.opt.sel .opt-icon {
+  background: var(--crimson);
+}
+.opt.sel .opt-icon i { color: #fff; }
+.opt-text {
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text);
+}
+.opt.sel .opt-text { color: var(--crimson); font-weight: 500; }
+
+/* ── next button ── */
+.next-btn {
+  width: 100%;
+  background: var(--crimson);
+  color: #fff;
+  border: none;
+  border-radius: var(--r);
+  padding: 15px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  display: none;
+  transition: transform .1s, opacity .2s;
+  letter-spacing: .01em;
+  box-shadow: 0 4px 18px rgba(139,26,26,.35);
+}
+.next-btn:hover { opacity: .9; }
+.next-btn:active { transform: scale(.98); }
+
+/* ── result ── */
+.result-hero {
+  border-radius: 20px;
+  overflow: hidden;
+  margin-bottom: 1rem;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+.result-hero-inner {
+  padding: 1.75rem 1.5rem 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+.result-hero::before {
+  content: '';
+  position: absolute;
+  top: -80px; right: -80px;
+  width: 240px; height: 240px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.06);
+  pointer-events: none;
+  z-index: 0;
+}
+.result-eyebrow {
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,.55);
+  margin-bottom: .5rem;
+}
+.result-title {
+  font-family: var(--serif);
+  font-size: clamp(24px, 6.5vw, 32px);
+  color: #fff;
+  line-height: 1.15;
+  margin-bottom: .35rem;
+}
+.result-sub {
+  font-size: 14px;
+  color: rgba(255,255,255,.7);
+  margin-bottom: 1rem;
+}
+.result-icon-wrap {
+  position: absolute;
+  top: 1.25rem;
+  right: 1.25rem;
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+  background: rgba(255,255,255,.15);
+  border: 0.5px solid rgba(255,255,255,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.result-icon-wrap i { font-size: 26px; color: rgba(255,255,255,.9); }
+
+.result-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+.rtag {
+  font-size: 12px;
+  padding: 4px 10px;
+  border-radius: 99px;
+  background: rgba(255,255,255,.15);
+  color: rgba(255,255,255,.88);
+  border: 0.5px solid rgba(255,255,255,.2);
+}
+
+/* ── result body cards ── */
+.result-body { display: flex; flex-direction: column; gap: .75rem; }
+
+.rcard {
+  background: #fff;
+  border: 0.5px solid var(--border);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  box-shadow: var(--shadow);
+}
+.rcard-label {
+  font-size: 10px;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: .6rem;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.rcard-label i { font-size: 14px; color: var(--crimson); }
+.rcard p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+.rcard p strong { color: var(--text); font-weight: 500; }
+
+.nudge-card {
+  background: linear-gradient(135deg, #fdf8f0 0%, #f0f8f5 100%);
+  border-left: 3px solid var(--crimson);
+  border-radius: 0 var(--r) var(--r) 0;
+  padding: 1.1rem 1.25rem;
+  box-shadow: var(--shadow);
+}
+.nudge-card .rcard-label { margin-bottom: .5rem; }
+
+.schol-card {
+  background: var(--forest);
+  border-radius: var(--r);
+  padding: 1.25rem;
+  box-shadow: var(--shadow-lg);
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+.schol-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: rgba(200,146,42,.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.schol-icon i { font-size: 20px; color: var(--gold); }
+.schol-text { flex: 1; }
+.schol-text p {
+  font-size: 13px;
+  line-height: 1.55;
+  color: rgba(255,255,255,.72);
+  margin-top: 3px;
+}
+.schol-text p strong { color: rgba(255,255,255,.95); font-weight: 500; }
+.schol-title {
+  font-size: 14px;
+  font-weight: 500;
+  color: #fff;
+  margin-bottom: 3px;
+}
+
+.btn-row {
+  display: flex;
+  flex-direction: column;
+  gap: 9px;
+}
+.btn-cta {
+  display: block;
+  width: 100%;
+  background: var(--crimson);
+  color: #fff;
+  border: none;
+  border-radius: var(--r);
+  padding: 15px;
+  font-family: var(--sans);
+  font-size: 15px;
+  font-weight: 500;
+  cursor: pointer;
+  text-align: center;
+  text-decoration: none;
+  transition: opacity .2s, transform .1s;
+  box-shadow: 0 4px 18px rgba(139,26,26,.35);
+  letter-spacing: .01em;
+}
+.btn-cta:active { transform: scale(.98); }
+.btn-cta:hover { opacity: .9; }
+.btn-cta.outline {
+  background: transparent;
+  color: var(--crimson);
+  border: 1px solid rgba(139,26,26,.3);
+  box-shadow: none;
+}
+
+/* ── animations ── */
+.fade-up {
+  animation: fadeUp .4s cubic-bezier(.22,1,.36,1) both;
+}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── footer ── */
+.quiz-footer {
+  text-align: center;
+  margin-top: 1.5rem;
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+.quiz-footer a { color: var(--crimson); text-decoration: none; }
+
+/* ── responsive tweaks ── */
+@media (min-width: 600px) {
+  .wrap { padding: 2rem 1.5rem 4rem; }
+  .btn-row { flex-direction: row; }
+  .btn-cta { flex: 1; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-bg" aria-hidden="true"></div>
+
+<main class="wrap" role="main">
+
+  <!-- wordmark -->
+  <div class="wordmark">
+    <div class="wordmark-ou" aria-hidden="true">
+      <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 4C11.2 4 4 11.2 4 20s7.2 16 16 16 16-7.2 16-16S28.8 4 20 4zm0 26c-5.5 0-10-4.5-10-10s4.5-10 10-10 10 4.5 10 10-4.5 10-10 10z"/>
+      </svg>
+    </div>
+    <div class="wordmark-text">
+      <strong>Sustainable Energy Systems</strong><br>
+      University of Oklahoma
+    </div>
+  </div>
+
+  <div id="app"></div>
+
+</main>
+
+<script>
+const QUESTIONS = [
+  {
+    kicker: "How you think",
+    text: "A community is debating whether to build a wind farm on the edge of town. What question do you immediately want answered?",
+    opts: [
+      { icon: "ti-circuit-cell", text: "How much energy will it generate, and what's the grid integration plan?", tag: "stem" },
+      { icon: "ti-speakerphone", text: "How do we explain this to residents so they actually trust the outcome?", tag: "comm" },
+      { icon: "ti-chart-line", text: "What are the economic ripple effects — jobs, land leases, tax base?", tag: "biz" },
+      { icon: "ti-scale", text: "Who has legal standing here, and what permits or opposition will emerge?", tag: "policy" },
+      { icon: "ti-users", text: "Which neighborhoods benefit and which ones bear the costs?", tag: "social" }
+    ]
+  },
+  {
+    kicker: "Your instinct",
+    text: "You're handed a 40-page energy report. Where do you start reading?",
+    opts: [
+      { icon: "ti-math-function", text: "The methodology and data appendix — I want to check the numbers.", tag: "stem" },
+      { icon: "ti-writing", text: "The executive summary — I want to know the story they're trying to tell.", tag: "comm" },
+      { icon: "ti-building-bank", text: "The financial projections and market assumptions.", tag: "biz" },
+      { icon: "ti-gavel", text: "The regulatory context and policy recommendations section.", tag: "policy" },
+      { icon: "ti-heart-handshake", text: "The community impact and equity sections.", tag: "social" }
+    ]
+  },
+  {
+    kicker: "Pick your path",
+    text: "Which opportunity would you jump at?",
+    opts: [
+      { icon: "ti-microscope", text: "Research fellowship — studying battery storage or carbon sequestration technology", tag: "stem" },
+      { icon: "ti-microphone-2", text: "Media internship — covering the politics and culture of the energy transition", tag: "comm" },
+      { icon: "ti-briefcase", text: "Finance rotation — evaluating clean energy investments and ESG portfolios", tag: "biz" },
+      { icon: "ti-building-community", text: "Government internship — working on state or federal energy policy", tag: "policy" },
+      { icon: "ti-plant", text: "Nonprofit role — working on energy access and climate justice in Oklahoma", tag: "social" }
+    ]
+  },
+  {
+    kicker: "Real talk",
+    text: "Someone says \"the energy transition is inevitable.\" Your honest reaction?",
+    opts: [
+      { icon: "ti-atom", text: "Maybe — but only if we solve the storage and materials science problems first.", tag: "stem" },
+      { icon: "ti-message-circle-2", text: "Possibly — but public trust and narrative framing will determine the pace.", tag: "comm" },
+      { icon: "ti-coin", text: "When the economics consistently pencil out, it will happen — not before.", tag: "biz" },
+      { icon: "ti-flag", text: "Only if policy frameworks keep up with the technology.", tag: "policy" },
+      { icon: "ti-world", text: "It depends entirely on who's making the decisions and who gets left behind.", tag: "social" }
+    ]
+  },
+  {
+    kicker: "Oklahoma lens",
+    text: "Oklahoma generates over 40% of its electricity from wind — second in the U.S. What story is missing from that headline?",
+    opts: [
+      { icon: "ti-wind", text: "The engineering challenge of integrating intermittent renewables into an aging grid.", tag: "stem" },
+      { icon: "ti-news", text: "Most Oklahomans don't know this — the communication gap is enormous.", tag: "comm" },
+      { icon: "ti-trending-up", text: "Whether the economic benefits are staying in Oklahoma or flowing elsewhere.", tag: "biz" },
+      { icon: "ti-clipboard-list", text: "How state energy policy enabled this — and what other states can learn.", tag: "policy" },
+      { icon: "ti-home", text: "Whether rural landowners and working-class communities are sharing in the gains.", tag: "social" }
+    ]
+  }
+];
+
+const RESULTS = {
+  stem: {
+    icon: "ti-circuit-cell",
+    title: "Energy Systems\nAnalyst",
+    sub: "The architect of how things actually work",
+    grad: "linear-gradient(145deg, #1a2e4a 0%, #0d1e30 60%, #1a3a2a 100%)",
+    tags: ["Systems thinking", "Technical depth", "Problem-solver"],
+    about: "You're drawn to the mechanics — the how behind the why. Whether it's grid resilience, carbon capture, battery chemistry, or geothermal potential, you want to understand the system from the inside out. That kind of thinking doesn't stay in labs; it shapes policy, investment, and the physical infrastructure of the future.",
+    ses: "SES gives your technical skills a richer context. The engineers and scientists who shape real decisions are the ones who can explain tradeoffs across economic, social, and policy dimensions — not just optimize within them. Our core courses were designed with that exact gap in mind.",
+    discipline: "Engineering · Geosciences · Physics · Environmental Science"
+  },
+  comm: {
+    icon: "ti-speakerphone",
+    title: "Climate\nCommunicator",
+    sub: "The translator between expertise and the public",
+    grad: "linear-gradient(145deg, #1a3a2a 0%, #0d2a1a 60%, #2a1a0a 100%)",
+    tags: ["Narrative fluency", "Public trust", "Cross-disciplinary"],
+    about: "The energy transition will be won or lost on communication. Technical solutions that can't be explained, understood, or trusted don't get built. You have a rare ability to translate complexity into clarity — and that skill is in genuinely short supply in every energy room that matters.",
+    ses: "SES gives your communications work substance. Understanding how energy systems actually function — technically, economically, politically — means your storytelling is grounded in something real. Journalists, PR professionals, and educators in SES don't just learn to talk about energy; they learn to think about it.",
+    discipline: "Journalism · Public Relations · English · Education · Fine Arts"
+  },
+  biz: {
+    icon: "ti-chart-line",
+    title: "Energy\nStrategist",
+    sub: "The one who makes the economics real",
+    grad: "linear-gradient(145deg, #2a1a05 0%, #1a0f00 60%, #1a2a3a 100%)",
+    tags: ["Market literacy", "Strategic analysis", "Impact investing"],
+    about: "Clean energy is one of the largest capital reallocation events in history. It needs people who understand markets, can model risk, and know when a deal is actually a deal. Business students who understand energy systems are the ones building the financial architecture of the transition — not just watching it happen.",
+    ses: "SES connects your analytical instincts to the specific dynamics of energy markets — carbon pricing, project finance, ESG frameworks, and industrial decarbonization. Price College students bring something most energy rooms are missing: economic rigor that isn't afraid of complexity.",
+    discipline: "Finance · Accounting · Management · Economics · Supply Chain"
+  },
+  policy: {
+    icon: "ti-scale",
+    title: "Energy Policy\nArchitect",
+    sub: "The one who changes what's possible",
+    grad: "linear-gradient(145deg, #1a1a3a 0%, #0d0d28 60%, #1a2a3a 100%)",
+    tags: ["Systems navigation", "Regulatory fluency", "Strategic advocacy"],
+    about: "Every turbine that gets built, every pipeline that gets permitted, every tax credit that unlocks a project — behind all of it is a policy decision. You understand that the energy transition isn't just a technical or economic challenge; it's a governance challenge. Pre-law, political science, and public administration students are far more central to energy's future than they're often told.",
+    ses: "SES gives you deep fluency in the governance of energy systems — how regulation works, how markets are shaped by law, and how advocacy intersects with technical reality. OU Law and Political Science faculty are embedded in the program for exactly this reason.",
+    discipline: "Pre-Law · Political Science · Public Admin · International Studies"
+  },
+  social: {
+    icon: "ti-users",
+    title: "Energy Equity\nResearcher",
+    sub: "The one who keeps the human cost in the room",
+    grad: "linear-gradient(145deg, #0a2a1a 0%, #051a10 60%, #1a2a1a 100%)",
+    tags: ["Equity analysis", "Community focus", "Interdisciplinary"],
+    about: "Every energy decision has a human dimension that technical reports tend to bury in footnotes. Who bears the burden of pollution? Who benefits from the boom? Whose land gets leased and whose neighborhood gets bypassed? You ask those questions instinctively — and the energy sector desperately needs people who won't stop asking them.",
+    ses: "SES was designed knowing that sociology, public health, geography, art, and education students bring something irreplaceable: they center the people that systems often forget. Our student-led Art + Energy exhibit and battery recycling research were driven by students exactly like you.",
+    discipline: "Sociology · Psychology · Geography · Public Health · Fine Arts"
+  }
+};
+
+function tally(answers) {
+  const c = {stem:0,comm:0,biz:0,policy:0,social:0};
+  answers.forEach(t => c[t]++);
+  return Object.entries(c).sort((a,b)=>b[1]-a[1])[0][0];
+}
+
+function renderHero() {
+  return `
+    <div class="hero fade-up">
+      <div class="hero-kicker">5 questions · Any major · Find your fit</div>
+      <h1>What's your<br><em>energy role?</em></h1>
+      <p class="hero-desc">The future of sustainable energy needs lawyers, journalists, artists, engineers, and economists — all at the same table. Where do you sit?</p>
+      <div class="hero-pills">
+        <span class="hero-pill"><i class="ti ti-certificate"></i> 15-credit certificate</span>
+        <span class="hero-pill"><i class="ti ti-building-arch"></i> All majors welcome</span>
+        <span class="hero-pill"><i class="ti ti-award"></i> Scholarships available</span>
+      </div>
+    </div>
+    <div class="scholarship-banner fade-up" style="animation-delay:.1s">
+      <i class="ti ti-coin"></i>
+      <p><strong>Scholarships available for 2026–27.</strong> Up to $1,000 for undergraduate students — awarded as you progress through the certificate. No minimum GPA. Any major.</p>
+    </div>`;
+}
+
+function renderQuestion(qi, answers) {
+  const q = QUESTIONS[qi];
+  const pct = Math.round((qi / QUESTIONS.length) * 100);
+  return `
+    <div class="fade-up">
+      <div class="prog-wrap">
+        <div class="prog-top">
+          <span class="prog-label">Question ${qi+1} of ${QUESTIONS.length}</span>
+          <span class="prog-num">${pct}%</span>
+        </div>
+        <div class="prog-track"><div class="prog-fill" style="width:${pct}%"></div></div>
+      </div>
+      <div class="q-card">
+        <div class="q-kicker">${q.kicker}</div>
+        <p class="q-text">${q.text}</p>
+        <div class="opts" id="opts">
+          ${q.opts.map((o,i) => `
+            <button class="opt" data-tag="${o.tag}" data-i="${i}" aria-pressed="false">
+              <span class="opt-icon"><i class="ti ${o.icon}" aria-hidden="true"></i></span>
+              <span class="opt-text">${o.text}</span>
+            </button>`).join('')}
+        </div>
+      </div>
+      <button class="next-btn" id="next-btn" aria-label="${qi < QUESTIONS.length-1 ? 'Next question' : 'See your result'}">
+        ${qi < QUESTIONS.length-1 ? 'Continue' : 'See my result'}
+        <i class="ti ti-arrow-right" aria-hidden="true"></i>
+      </button>
+    </div>`;
+}
+
+function renderResult(key) {
+  const r = RESULTS[key];
+  const titleLines = r.title.split('\n');
+  return `
+    <div class="fade-up">
+      <div class="result-hero" style="background:${r.grad}">
+        <div class="result-hero-inner">
+          <div class="result-icon-wrap" aria-hidden="true"><i class="ti ${r.icon}"></i></div>
+          <div class="result-eyebrow">Your energy role</div>
+          <h2 class="result-title">${titleLines[0]}<br>${titleLines[1]}</h2>
+          <p class="result-sub">${r.sub}</p>
+          <div class="result-tags">
+            ${r.tags.map(t=>`<span class="rtag">${t}</span>`).join('')}
+          </div>
+        </div>
+      </div>
+
+      <div class="result-body">
+        <div class="rcard">
+          <div class="rcard-label"><i class="ti ti-user-circle" aria-hidden="true"></i> What this looks like for you</div>
+          <p>${r.about}</p>
+        </div>
+
+        <div class="nudge-card">
+          <div class="rcard-label"><i class="ti ti-arrow-merge-left" aria-hidden="true"></i> Why SES fits your path</div>
+          <p>${r.ses}</p>
+        </div>
+
+        <div class="rcard">
+          <div class="rcard-label"><i class="ti ti-books" aria-hidden="true"></i> Students like you already here</div>
+          <p><strong>Majors from:</strong> ${r.discipline}</p>
+        </div>
+
+        <div class="schol-card">
+          <div class="schol-icon"><i class="ti ti-award" aria-hidden="true"></i></div>
+          <div class="schol-text">
+            <div class="schol-title">Scholarships available — no GPA minimum</div>
+            <p>Up to <strong>$1,000</strong> for undergraduates who enroll in the SES Certificate. Awards are paid out as you reach milestones — so your commitment is rewarded step by step. <strong>20 awards available for 2026–27.</strong></p>
+          </div>
+        </div>
+
+        <div class="btn-row">
+          <a href="https://ou.edu/mcee/ses" target="_blank" rel="noopener" class="btn-cta">Explore the SES program</a>
+          <a href="mailto:SES@ou.edu" class="btn-cta outline">Email SES@ou.edu</a>
+        </div>
+        <button class="btn-cta outline" onclick="init()" style="margin-top:.25rem">Retake the quiz</button>
+      </div>
+
+      <p class="quiz-footer">
+        <a href="https://ou.edu/mcee/ses">ou.edu/mcee/ses</a> &nbsp;·&nbsp; SES@ou.edu<br>
+        Sustainable Energy Systems Certificate · University of Oklahoma
+      </p>
+    </div>`;
+}
+
+let state = { phase: 'hero', qi: 0, answers: [] };
+
+function init() {
+  state = { phase: 'hero', qi: 0, answers: [] };
+  paint();
+}
+
+function startQuiz() {
+  state.phase = 'quiz';
+  paint();
+}
+
+function paint() {
+  const app = document.getElementById('app');
+  if (state.phase === 'hero') {
+    app.innerHTML = renderHero();
+    // start button is the hero itself — add a CTA
+    const hero = app.querySelector('.hero');
+    const btn = document.createElement('button');
+    btn.className = 'next-btn';
+    btn.style.display = 'block';
+    btn.style.marginTop = '1rem';
+    btn.innerHTML = 'Find your energy role <i class="ti ti-arrow-right" aria-hidden="true"></i>';
+    btn.addEventListener('click', startQuiz);
+    hero.appendChild(btn);
+  } else if (state.phase === 'quiz') {
+    app.innerHTML = renderQuestion(state.qi, state.answers);
+    // wire up options
+    app.querySelectorAll('.opt').forEach(btn => {
+      btn.addEventListener('click', () => {
+        app.querySelectorAll('.opt').forEach(b => { b.classList.remove('sel'); b.setAttribute('aria-pressed','false'); });
+        btn.classList.add('sel');
+        btn.setAttribute('aria-pressed','true');
+        const nb = document.getElementById('next-btn');
+        nb.style.display = 'block';
+        nb._tag = btn.dataset.tag;
+      });
+    });
+    document.getElementById('next-btn').addEventListener('click', function() {
+      if (!this._tag) return;
+      state.answers.push(this._tag);
+      if (state.qi < QUESTIONS.length - 1) {
+        state.qi++;
+        state.phase = 'quiz';
+        paint();
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      } else {
+        state.phase = 'result';
+        paint();
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+    });
+  } else if (state.phase === 'result') {
+    const key = tally(state.answers);
+    app.innerHTML = renderResult(key);
+  }
+}
+
+init();
+</script>
+</body>
+</html>
