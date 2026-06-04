@@ -5,7 +5,7 @@ Sustainable Energy Systems Certificate Program
 University of Oklahoma  
 [ou.edu/mcee/ses](https://ou.edu/mcee/ses)
 
-**[Launch the quiz](https://hbedle-subsurface.github.io/SES_energy_role/)** ← live on GitHub Pages
+**[Launch the quiz](https://hbedle-subsurface.github.io/SES_energy_role/)**
 
 ---
 
@@ -56,13 +56,6 @@ Every result card surfaces the undergraduate scholarship program: up to $1,000, 
 
 ---
 
-## Citation
-
-If you use this in a presentation, syllabus, or recruitment material:
-
-> Bedle, H. (2026). *What's Your Energy Role? An SES Certificate Recruitment Quiz*, v1.0. Sustainable Energy Systems Certificate Program, University of Oklahoma.
-
----
 
 ## License
 
